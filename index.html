@@ -3,838 +3,755 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zyllah Digital — Estratégia e Presença Digital</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Zyllah — Presença Digital de Alto Padrão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0c0c0e;
-  --surface: #131315;
-  --surface2: #1a1a1d;
-  --border: #23232a;
-  --text: #f0ede8;
-  --muted: #6e6c66;
-  --accent: #d4a853;
-  --accent-dim: rgba(212,168,83,0.10);
-  --accent-glow: rgba(212,168,83,0.25);
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+  :root {
+    --gold: #B8976A;
+    --gold-light: #D4B896;
+    --gold-pale: #F2E8D9;
+    --ink: #1A1714;
+    --ink-soft: #3D3830;
+    --cream: #FAF7F2;
+    --cream-mid: #F0EBE1;
+    --white: #FFFFFF;
+  }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
+  html { scroll-behavior: smooth; }
 
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 9999; opacity: 0.6;
-}
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 60px;
+    transition: background 0.5s, padding 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(250,247,242,0.96);
+    backdrop-filter: blur(12px);
+    padding: 18px 60px;
+    border-bottom: 1px solid rgba(184,151,106,0.15);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 42px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-soft);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    text-decoration: none; border: 1px solid var(--gold);
+    padding: 10px 24px; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
 
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  padding: 1.8rem 5rem;
-  display: flex; justify-content: space-between; align-items: center;
-  transition: all 0.4s;
-}
-nav.scrolled {
-  padding: 1.2rem 5rem;
-  background: rgba(12,12,14,0.94);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--ink);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 120px 80px 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: 'Z';
+    position: absolute; top: -60px; left: -40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 420px; font-weight: 600;
+    color: rgba(184,151,106,0.07);
+    line-height: 1; pointer-events: none; user-select: none;
+  }
+  .hero-tag {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+    opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5vw, 68px); font-weight: 300;
+    line-height: 1.1; color: var(--white); margin-bottom: 36px;
+    opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-headline em { font-style: italic; color: var(--gold-light); }
+  .hero-sub {
+    font-size: 15px; font-weight: 300; line-height: 1.8;
+    color: rgba(255,255,255,0.5); max-width: 400px; margin-bottom: 56px;
+    opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+  }
+  .hero-cta-group {
+    display: flex; align-items: center; gap: 32px;
+    opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+  }
+  .btn-primary {
+    display: inline-block; font-size: 11px; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink); background: var(--gold);
+    padding: 16px 40px; text-decoration: none; transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .hero-note { font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); }
 
-.logo-wrap { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; }
-.logo-svg { width: 38px; height: 38px; flex-shrink: 0; }
-.logo-wordmark {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem; font-weight: 700;
-  color: var(--text); letter-spacing: 0.04em;
-}
-.logo-wordmark span { color: var(--accent); }
+  .hero-right {
+    background: var(--cream-mid);
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 80px 100px;
+    position: relative;
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute; inset: 60px;
+    border: 1px solid rgba(184,151,106,0.2);
+    pointer-events: none;
+  }
+  .hero-stat-block {
+    display: flex; flex-direction: column; gap: 56px;
+    opacity: 0; animation: fadeIn 1.2s 1.1s forwards;
+  }
+  .hero-stat { border-left: 1px solid var(--gold); padding-left: 28px; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300; color: var(--ink);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .stat-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
 
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a {
-  color: var(--muted); text-decoration: none;
-  font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-  transition: color 0.3s; position: relative; padding-bottom: 2px;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 1px; background: var(--accent);
-  transition: width 0.3s;
-}
-.nav-links a:hover { color: var(--text); }
-.nav-links a:hover::after { width: 100%; }
+  /* DIVIDER */
+  .divider {
+    display: flex; align-items: center; gap: 24px;
+    padding: 0 60px; margin: 80px 0;
+  }
+  .divider-line { flex: 1; height: 1px; background: rgba(184,151,106,0.25); }
+  .divider-ornament { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold); }
 
-.nav-cta {
-  padding: 0.6rem 1.4rem !important;
-  border: 1px solid var(--accent) !important;
-  color: var(--accent) !important;
-}
-.nav-cta:hover { background: var(--accent-dim) !important; }
-.nav-cta::after { display: none !important; }
+  /* MANIFESTO */
+  .manifesto {
+    padding: 100px 60px;
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;
+  }
+  .manifesto-label {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); padding-top: 8px; position: sticky; top: 100px;
+  }
+  .manifesto-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 32px); font-weight: 300;
+    line-height: 1.6; color: var(--ink);
+  }
+  .manifesto-body p + p { margin-top: 1.4em; }
+  .manifesto-body em { font-style: italic; color: var(--gold); }
+  .manifesto-aside {
+    margin-top: 48px; padding-top: 32px;
+    border-top: 1px solid rgba(184,151,106,0.3);
+    font-size: 13px; line-height: 1.9; color: var(--ink-soft);
+    font-family: 'Jost', sans-serif;
+  }
 
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 9rem 5rem 5rem;
-  position: relative; overflow: hidden;
-}
+  /* SERVIÇOS */
+  .services { background: var(--ink); padding: 120px 60px; }
+  .services-header {
+    max-width: 1200px; margin: 0 auto 80px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .section-tag { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px); font-weight: 300;
+    color: var(--white); line-height: 1.15;
+  }
+  .services-intro { max-width: 360px; font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.4); text-align: right; }
+  .services-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+  }
+  .service-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(184,151,106,0.12);
+    padding: 56px 52px;
+    transition: background 0.4s, border-color 0.4s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 0; height: 1px; background: var(--gold); transition: width 0.5s;
+  }
+  .service-card:hover::before { width: 100%; }
+  .service-card:hover { background: rgba(184,151,106,0.05); border-color: rgba(184,151,106,0.3); }
+  .service-number { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 32px; opacity: 0.7; }
+  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--white); margin-bottom: 8px; }
+  .service-subtitle { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+  .service-desc { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.5); }
+  .service-detail {
+    margin-top: 32px; padding-top: 24px;
+    border-top: 1px solid rgba(184,151,106,0.15);
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .detail-tag {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(184,151,106,0.6); padding: 6px 14px;
+    border: 1px solid rgba(184,151,106,0.2);
+  }
 
-.hero-grid-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 70% at 80% 50%, black 0%, transparent 70%);
-  opacity: 0.4;
-}
+  /* PARA QUEM */
+  .for-whom { padding: 120px 60px; max-width: 1200px; margin: 0 auto; }
+  .for-whom-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    margin-bottom: 80px; align-items: end;
+  }
+  .for-whom-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 4.5vw, 58px); font-weight: 300;
+    line-height: 1.1; color: var(--ink);
+  }
+  .for-whom-title em { font-style: italic; color: var(--gold); }
+  .for-whom-body { font-size: 15px; line-height: 1.85; color: var(--ink-soft); }
+  .criteria-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .criteria-item {
+    padding: 48px 40px; background: var(--cream-mid);
+    border-top: 1px solid rgba(184,151,106,0.3); transition: background 0.3s;
+  }
+  .criteria-item:hover { background: var(--gold-pale); }
+  .criteria-check { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--gold); margin-bottom: 20px; }
+  .criteria-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
+  .criteria-desc { font-size: 13px; line-height: 1.8; color: var(--ink-soft); }
+  .for-whom-footer {
+    margin-top: 60px; padding: 48px 52px; background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .for-whom-footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; color: var(--white);
+    line-height: 1.4; max-width: 600px;
+  }
+  .for-whom-footer em { font-style: italic; color: var(--gold-light); }
 
-.hero-glow {
-  position: absolute; top: 15%; right: 5%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
-}
+  /* DEPOIMENTOS */
+  .testimonials { background: var(--cream-mid); padding: 120px 60px; }
+  .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+  .testimonials-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
+  .testimonials-note { font-size: 12px; letter-spacing: 0.08em; color: rgba(184,151,106,0.6); font-style: italic; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: var(--white); padding: 48px 40px;
+    border-bottom: 2px solid transparent; transition: border-color 0.3s;
+  }
+  .testimonial-card:hover { border-color: var(--gold); }
+  .quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 64px; color: var(--gold); line-height: 0.6; margin-bottom: 32px; display: block; }
+  .testimonial-text { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; line-height: 1.7; color: var(--ink); margin-bottom: 36px; }
+  .testimonial-author { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 4px; }
+  .testimonial-location { font-size: 11px; letter-spacing: 0.12em; color: var(--gold); }
+  .placeholder-notice { margin-top: 10px; font-size: 10px; color: rgba(184,151,106,0.45); font-style: italic; }
 
-.hero-content { position: relative; z-index: 1; }
+  /* EXPERIÊNCIA */
+  .experience {
+    padding: 120px 60px; max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center;
+  }
+  .exp-visual { position: relative; height: 500px; }
+  .exp-box-main {
+    position: absolute; inset: 0; background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .exp-box-main span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 180px; font-weight: 300;
+    color: rgba(184,151,106,0.1); line-height: 1;
+  }
+  .exp-badge {
+    position: absolute; bottom: -24px; right: -24px;
+    background: var(--gold); padding: 32px; text-align: center;
+  }
+  .exp-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: var(--white); line-height: 1; }
+  .exp-badge-text { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-top: 4px; }
+  .exp-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 3.5vw, 48px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 28px; }
+  .exp-title em { font-style: italic; color: var(--gold); }
+  .exp-text { font-size: 15px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 40px; }
+  .exp-points { display: flex; flex-direction: column; gap: 20px; }
+  .exp-point { display: flex; gap: 20px; align-items: flex-start; }
+  .exp-point-icon { flex-shrink: 0; width: 28px; height: 1px; background: var(--gold); margin-top: 11px; }
+  .exp-point-text { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
 
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 0.75rem;
-  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 2.5rem;
-  opacity: 0; animation: fadeUp 0.7s ease forwards 0.2s;
-}
-.hero-eyebrow::before {
-  content: ''; display: block; width: 32px; height: 1px; background: var(--accent);
-}
+  /* DIAGNÓSTICO CTA */
+  .diagnostic {
+    background: var(--ink); padding: 140px 60px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .diagnostic::before {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,151,106,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .diagnostic-tag { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: block; }
+  .diagnostic-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 68px); font-weight: 300;
+    color: var(--white); line-height: 1.1;
+    max-width: 800px; margin: 0 auto 24px;
+  }
+  .diagnostic-title em { font-style: italic; color: var(--gold-light); }
+  .diagnostic-sub {
+    font-size: 15px; color: rgba(255,255,255,0.45);
+    line-height: 1.8; max-width: 520px; margin: 0 auto 60px;
+  }
+  .btn-diagnostic {
+    display: inline-block; font-size: 11px; font-weight: 400;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--ink); background: var(--gold);
+    padding: 20px 56px; text-decoration: none; transition: all 0.3s;
+  }
+  .btn-diagnostic:hover { background: var(--gold-light); letter-spacing: 0.3em; }
+  .diagnostic-detail { margin-top: 32px; font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3.2rem, 7.5vw, 7rem);
-  font-weight: 900; line-height: 1.02; max-width: 13ch;
-  opacity: 0; animation: fadeUp 0.8s ease forwards 0.35s;
-}
-.hero h1 em { font-style: italic; color: var(--accent); }
-.hero h1 .outline {
-  -webkit-text-stroke: 1px var(--text);
-  color: transparent;
-}
+  /* FOOTER */
+  footer { background: #0F0D0B; padding: 80px 60px 48px; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding-bottom: 60px; border-bottom: 1px solid rgba(184,151,106,0.15); margin-bottom: 40px;
+  }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 16px; }
+  .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; line-height: 1.6; max-width: 240px; }
+  .footer-links h4 { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .footer-links ul { list-style: none; }
+  .footer-links li + li { margin-top: 12px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.3s; letter-spacing: 0.05em; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
+  .footer-location { font-size: 11px; color: rgba(184,151,106,0.4); letter-spacing: 0.15em; text-transform: uppercase; }
 
-.hero-desc {
-  margin-top: 2rem;
-  font-size: 1.05rem; color: var(--muted);
-  max-width: 44ch; line-height: 1.9;
-  opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;
-}
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+  .reveal.visible { opacity: 1; transform: none; }
 
-.hero-actions {
-  margin-top: 3rem;
-  display: flex; gap: 1.2rem; align-items: center;
-  opacity: 0; animation: fadeUp 0.8s ease forwards 0.65s;
-}
-
-.btn-gold {
-  display: inline-block;
-  padding: 1rem 2.4rem;
-  background: var(--accent); color: #0c0c0e;
-  font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.btn-gold:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px var(--accent-glow);
-}
-
-.btn-ghost {
-  color: var(--muted); font-size: 0.88rem;
-  text-decoration: none; letter-spacing: 0.04em;
-  transition: color 0.3s; display: flex; align-items: center; gap: 0.5rem;
-}
-.btn-ghost:hover { color: var(--text); }
-
-.hero-stats {
-  margin-top: 5rem;
-  display: flex; gap: 3rem;
-  opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s;
-}
-.stat-item { border-left: 1px solid var(--border); padding-left: 1.5rem; }
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem; font-weight: 700; color: var(--accent); line-height: 1;
-}
-.stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.08em; }
-
-.hero-scroll-hint {
-  position: absolute; bottom: 2.5rem; right: 5rem;
-  writing-mode: vertical-rl;
-  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
-  display: flex; align-items: center; gap: 0.75rem;
-  opacity: 0; animation: fadeUp 0.8s ease forwards 1.1s;
-}
-.hero-scroll-hint::after {
-  content: ''; display: block; width: 1px; height: 48px;
-  background: linear-gradient(to bottom, var(--muted), transparent);
-}
-
-/* TICKER */
-.ticker-wrap {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  overflow: hidden; padding: 1.1rem 0;
-  background: var(--surface);
-}
-.ticker-track {
-  display: flex;
-  animation: ticker 30s linear infinite;
-  white-space: nowrap;
-}
-.ticker-item {
-  display: flex; align-items: center; gap: 1.5rem;
-  padding: 0 2.5rem;
-  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
-  border-right: 1px solid var(--border);
-}
-.ticker-dot { color: var(--accent); }
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* SECTIONS */
-section { padding: 8rem 5rem; }
-
-.section-tag {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 1.5rem;
-}
-.section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
-
-.section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 700; line-height: 1.12; max-width: 20ch;
-}
-.section-title em { font-style: italic; color: var(--accent); }
-
-/* MANIFESTO */
-#manifesto {
-  background: var(--surface);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-}
-.manifesto-text p {
-  font-size: 1rem; color: var(--muted); line-height: 2; margin-top: 1.5rem; max-width: 46ch;
-}
-.manifesto-quote {
-  border-left: 2px solid var(--accent);
-  padding: 2.5rem 3rem;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-  font-style: italic; line-height: 1.55; color: var(--text);
-}
-.manifesto-quote cite {
-  display: block; margin-top: 1.5rem;
-  font-family: 'DM Sans', sans-serif;
-  font-style: normal; font-size: 0.75rem;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
-}
-
-/* PARA QUEM */
-#para-quem { background: var(--bg); }
-.audience-grid {
-  margin-top: 4rem;
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 1px; background: var(--border);
-  border: 1px solid var(--border);
-}
-.audience-card {
-  background: var(--bg); padding: 3rem 2.5rem;
-  transition: background 0.35s;
-}
-.audience-card:hover { background: var(--surface2); }
-.aud-icon {
-  width: 48px; height: 48px;
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; margin-bottom: 1.5rem;
-  transition: border-color 0.3s;
-}
-.audience-card:hover .aud-icon { border-color: var(--accent); }
-.audience-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; margin-bottom: 0.75rem;
-}
-.audience-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.85; }
-
-/* SERVIÇOS */
-#servicos { background: var(--surface); }
-.services-intro {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 4rem; gap: 2rem;
-}
-.services-intro p { font-size: 0.9rem; color: var(--muted); max-width: 40ch; line-height: 1.9; }
-
-.service-row {
-  display: grid; grid-template-columns: 80px 1fr 1fr auto;
-  gap: 2rem; align-items: center;
-  padding: 2.2rem 0;
-  border-bottom: 1px solid var(--border);
-  position: relative; cursor: default;
-}
-.service-row::before {
-  content: ''; position: absolute;
-  left: -5rem; right: -5rem; top: 0; bottom: 0;
-  background: var(--accent-dim);
-  opacity: 0; transition: opacity 0.3s;
-  pointer-events: none;
-}
-.service-row:hover::before { opacity: 1; }
-.service-row:first-child { border-top: 1px solid var(--border); }
-
-.srv-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em;
-}
-.srv-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem; font-weight: 700;
-}
-.srv-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.75; }
-.srv-tag {
-  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--accent); border: 1px solid var(--accent-dim);
-  padding: 0.3rem 0.8rem; white-space: nowrap;
-}
-
-/* PROCESSO */
-#processo { background: var(--bg); }
-.process-intro {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 6rem; align-items: flex-start; margin-bottom: 5rem;
-}
-.process-intro p { font-size: 0.9rem; color: var(--muted); line-height: 1.95; margin-top: 1rem; }
-
-.process-steps {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--border);
-}
-.process-step {
-  padding: 3rem 2rem;
-  border-right: 1px solid var(--border);
-  transition: background 0.3s;
-}
-.process-step:last-child { border-right: none; }
-.process-step:hover { background: var(--surface); }
-
-.step-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem; font-weight: 900;
-  color: var(--border); line-height: 1;
-  margin-bottom: 1.5rem; padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
-  transition: color 0.3s;
-}
-.process-step:hover .step-num { color: var(--accent); }
-.process-step h3 {
-  font-size: 0.82rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;
-}
-.process-step p { font-size: 0.83rem; color: var(--muted); line-height: 1.85; }
-
-/* DIFERENCIAIS */
-#diferenciais { background: var(--surface); }
-.diff-grid {
-  margin-top: 4rem;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-}
-.diff-card {
-  padding: 2.5rem; border: 1px solid var(--border);
-  transition: border-color 0.3s, background 0.3s;
-}
-.diff-card:hover { border-color: var(--accent); background: var(--accent-dim); }
-.diff-icon { font-size: 1.6rem; margin-bottom: 1.2rem; }
-.diff-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem; margin-bottom: 0.6rem;
-}
-.diff-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.8; }
-
-/* CONTATO */
-#contato {
-  display: grid; grid-template-columns: 1fr 1fr;
-  padding: 0;
-}
-.contact-left {
-  padding: 8rem 5rem;
-  background: var(--accent); color: #0c0c0e;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.contact-left .section-tag { color: rgba(12,12,14,0.5); }
-.contact-left .section-tag::before { background: rgba(12,12,14,0.4); }
-.contact-left .section-title { color: #0c0c0e; }
-.contact-left p { font-size: 0.95rem; opacity: 0.7; margin-top: 1.5rem; max-width: 38ch; line-height: 1.9; }
-
-.contact-right {
-  padding: 8rem 5rem;
-  background: var(--surface);
-  display: flex; flex-direction: column; justify-content: center;
-}
-.contact-info-item {
-  display: flex; align-items: flex-start; gap: 1.2rem;
-  padding: 1.5rem 0; border-bottom: 1px solid var(--border);
-}
-.contact-info-item:first-child { border-top: 1px solid var(--border); margin-top: 1.5rem; }
-.ci-label {
-  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--muted); min-width: 80px; padding-top: 3px;
-}
-.ci-value { font-size: 0.95rem; }
-.ci-value a { color: var(--text); text-decoration: none; transition: color 0.3s; }
-.ci-value a:hover { color: var(--accent); }
-
-.contact-cta-btn {
-  margin-top: 2.5rem;
-  display: inline-flex; align-items: center; gap: 0.8rem;
-  padding: 1.1rem 2rem;
-  background: var(--accent); color: #0c0c0e;
-  font-size: 0.8rem; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  text-decoration: none; width: fit-content;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.contact-cta-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px var(--accent-glow);
-}
-
-/* FOOTER */
-footer {
-  padding: 2.5rem 5rem;
-  border-top: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-}
-.footer-copy { font-size: 0.78rem; color: var(--muted); }
-.footer-tagline {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.85rem; font-style: italic; color: var(--muted);
-}
-
-/* FLOATING CTA */
-.float-cta {
-  position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
-  display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem;
-}
-.float-bubble {
-  background: var(--surface); border: 1px solid var(--border);
-  padding: 0.6rem 1rem; font-size: 0.75rem; color: var(--muted);
-  opacity: 0; transform: translateY(8px) scale(0.95);
-  transition: all 0.3s; pointer-events: none; white-space: nowrap;
-}
-.float-cta:hover .float-bubble { opacity: 1; transform: translateY(0) scale(1); }
-.float-btn {
-  width: 56px; height: 56px; background: #25D366; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
-  transition: transform 0.3s, box-shadow 0.3s;
-  animation: floatPulse 3s ease-in-out infinite;
-}
-.float-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 30px rgba(37,211,102,0.5);
-}
-.float-btn svg { width: 28px; height: 28px; }
-@keyframes floatPulse {
-  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
-  50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); }
-}
-
-/* REVEAL */
-.reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible { opacity: 1; transform: none; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  nav, footer { padding-left: 3rem; padding-right: 3rem; }
-  nav.scrolled { padding-left: 3rem; padding-right: 3rem; }
-  .hero, section { padding-left: 3rem; padding-right: 3rem; }
-  #manifesto { grid-template-columns: 1fr; gap: 3rem; }
-  .process-intro { grid-template-columns: 1fr; gap: 1.5rem; }
-  .diff-grid { grid-template-columns: 1fr 1fr; }
-  #contato { grid-template-columns: 1fr; }
-  .contact-left, .contact-right { padding: 5rem 3rem; }
-}
-@media (max-width: 768px) {
-  nav { padding: 1.5rem 1.5rem; }
-  nav.scrolled { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
-  footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
-  .services-intro { flex-direction: column; }
-  .service-row { grid-template-columns: 50px 1fr; }
-  .srv-desc, .srv-tag { grid-column: 2; }
-  .process-steps { grid-template-columns: 1fr 1fr; }
-  .process-step:nth-child(2) { border-right: none; }
-  .process-step:nth-child(3) { border-right: 1px solid var(--border); }
-  .audience-grid { grid-template-columns: 1fr; }
-  .diff-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-  .hero-scroll-hint { display: none; }
-}
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 24px 32px; }
+    nav.scrolled { padding: 16px 32px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 120px 32px 80px; }
+    .manifesto { grid-template-columns: 1fr; gap: 32px; padding: 80px 32px; }
+    .manifesto-label { position: static; }
+    .services { padding: 80px 32px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .services-header { flex-direction: column; gap: 24px; }
+    .services-intro { text-align: left; }
+    .for-whom { padding: 80px 32px; }
+    .for-whom-header { grid-template-columns: 1fr; gap: 32px; }
+    .criteria-list { grid-template-columns: 1fr; }
+    .for-whom-footer { flex-direction: column; }
+    .testimonials { padding: 80px 32px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonials-header { flex-direction: column; gap: 16px; }
+    .experience { grid-template-columns: 1fr; gap: 60px; padding: 80px 32px; }
+    .exp-visual { height: 300px; }
+    .diagnostic { padding: 100px 32px; }
+    footer { padding: 60px 32px 40px; }
+    .footer-top { flex-direction: column; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .divider { padding: 0 32px; }
+  }
 </style>
 </head>
 <body>
 
-<!-- FLOATING CTA -->
-<div class="float-cta">
-  <div class="float-bubble">Fale com a Zyllah agora</div>
-  <a href="https://wa.me/5521967114850" class="float-btn" target="_blank" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-  </a>
-</div>
-
-<!-- NAV -->
 <nav id="nav">
-  <a href="#" class="logo-wrap">
-    <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="38" height="38" fill="#0c0c0e"/>
-      <rect x="0.5" y="0.5" width="37" height="37" stroke="#23232a"/>
-      <line x1="7" y1="10" x2="20" y2="10" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
-      <line x1="20" y1="10" x2="7" y2="28" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
-      <line x1="7" y1="28" x2="20" y2="28" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
-      <line x1="23" y1="10" x2="30" y2="19" stroke="#f0ede8" stroke-width="2" stroke-linecap="round"/>
-      <line x1="37" y1="10" x2="30" y2="19" stroke="#f0ede8" stroke-width="2" stroke-linecap="round"/>
-      <line x1="30" y1="19" x2="30" y2="28" stroke="#f0ede8" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="logo-wordmark">Zyllah<span>.</span></span>
-  </a>
+  <a href="#" class="nav-logo">ZYLLAH</a>
   <ul class="nav-links">
-    <li><a href="#manifesto">Sobre</a></li>
-    <li><a href="#para-quem">Para quem</a></li>
     <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#processo">Processo</a></li>
-    <li><a href="#contato" class="nav-cta">Falar agora</a></li>
+    <li><a href="#para-quem">Para Quem</a></li>
+    <li><a href="#sobre">Sobre</a></li>
   </ul>
+  <a href="#diagnostico" class="nav-cta">Solicitar Diagnóstico</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Zyllah Digital — Estratégia &amp; Presença</p>
-    <h1>Sua marca,<br>no <em>nível</em> que<br>você <span class="outline">merece.</span></h1>
-    <p class="hero-desc">Para profissionais e negócios que entregam qualidade mas ainda não têm uma presença digital à altura do que fazem.</p>
-    <div class="hero-actions">
-      <a href="#contato" class="btn-gold">Quero começar</a>
-      <a href="#servicos" class="btn-ghost">
-        Ver serviços &rarr;
-      </a>
+  <div class="hero-left">
+    <span class="hero-tag">Presença Digital de Alto Padrão — São Paulo</span>
+    <h1 class="hero-headline">
+      Sua excelência clínica<br>
+      <em>traduzida em prestígio</em><br>
+      digital.
+    </h1>
+    <p class="hero-sub">
+      Para clínicas e especialistas que já são referência no físico
+      e precisam que o digital reflita essa autoridade — com a mesma precisão.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#diagnostico" class="btn-primary">Solicitar Diagnóstico</a>
+      <span class="hero-note">Vagas limitadas por ciclo</span>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">20+</div>
-        <div class="stat-label">Anos de experiência</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-block">
+      <div class="hero-stat">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Anos em produção audiovisual</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Décadas audiovisual</div>
+      <div class="hero-stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Foco em estética de alto padrão</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Foco no resultado</div>
+      <div class="hero-stat">
+        <div class="stat-number">SP</div>
+        <div class="stat-label">Jardins · Itaim · Moema · Vila Nova</div>
       </div>
     </div>
   </div>
-  <div class="hero-scroll-hint">Role para explorar</div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Identidade Visual</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Gestão de Redes</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Produção Audiovisual</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Tráfego Pago</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Sites &amp; Landing Pages</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Estratégia Digital</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Identidade Visual</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Gestão de Redes</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Produção Audiovisual</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Tráfego Pago</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Sites &amp; Landing Pages</div>
-    <div class="ticker-item"><span class="ticker-dot">◆</span> Estratégia Digital</div>
+<!-- MANIFESTO -->
+<section class="manifesto" id="sobre">
+  <div class="manifesto-label reveal">Manifesto</div>
+  <div class="manifesto-body reveal">
+    <p>
+      Existe um momento preciso em que uma médica para de ser boa profissional
+      e se torna <em>referência</em>. Esse momento raramente acontece no consultório.
+      Acontece antes — no instante em que a futura paciente te encontra no digital.
+    </p>
+    <p>
+      A Zyllah existe para que esse primeiro encontro aconteça da forma certa:
+      com a mesma sofisticação, a mesma precisão e o mesmo cuidado
+      que você dedica a cada protocolo.
+    </p>
+    <p>
+      Não fazemos marketing para clínicas. Construímos
+      <em>presença digital à altura de quem você é.</em>
+    </p>
+    <div class="manifesto-aside">
+      Estratégia, estética e audiovisual integrados — para que o digital
+      não precise imitar o que você já é no mundo físico, mas sim <strong>ampliá-lo</strong>.
+    </div>
   </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-ornament">✦</div>
+  <div class="divider-line"></div>
 </div>
 
-<!-- MANIFESTO -->
-<section id="manifesto">
-  <div class="manifesto-text reveal">
-    <p class="section-tag">Sobre a Zyllah</p>
-    <h2 class="section-title">Marketing feito com <em>intenção.</em></h2>
-    <p>A Zyllah Digital nasceu da crença de que pequenos negócios e profissionais sérios merecem a mesma qualidade de comunicação que grandes marcas. Com duas décadas de experiência em criação audiovisual, design e estratégia digital, entregamos presença que vai além do visual — ela converte.</p>
-    <p style="margin-top: 1rem;">Não somos uma fábrica de posts. Somos parceiros estratégicos que entendem o seu negócio antes de criar qualquer coisa.</p>
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="services-header reveal">
+    <div>
+      <p class="section-tag">O que fazemos</p>
+      <h2 class="section-title">O Sistema<br>Zyllah de Presença</h2>
+    </div>
+    <p class="services-intro">
+      Quatro pilares integrados. Cada um projetado para que sua clínica
+      seja percebida como o que ela realmente é: a melhor opção disponível.
+    </p>
   </div>
-  <div class="manifesto-quote reveal">
-    "A diferença entre uma marca que cresce e uma que estagna quase nunca está no produto — está em como ela se comunica."
-    <cite>— Guilherme Caetano, fundador</cite>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-number">01</div>
+      <div class="service-name">Identidade Visual</div>
+      <div class="service-subtitle">Branding de Alto Padrão</div>
+      <p class="service-desc">
+        Sua marca não comunica o que você faz — comunica o que você representa.
+        Construímos a linguagem visual que precede sua reputação: logotipo,
+        paletas, tipografia e aplicações que traduzem excelência antes de
+        qualquer palavra ser lida.
+      </p>
+      <div class="service-detail">
+        <span class="detail-tag">Identidade Primária</span>
+        <span class="detail-tag">Brand Book</span>
+        <span class="detail-tag">Aplicações Premium</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-number">02</div>
+      <div class="service-name">Experiência Sensorial</div>
+      <div class="service-subtitle">Produção Audiovisual</div>
+      <p class="service-desc">
+        O atendimento da sua paciente começa antes do primeiro toque.
+        Criamos conteúdo audiovisual que faz ela sentir o clima da sua clínica,
+        a temperatura do seu cuidado, antes mesmo de atravessar a porta.
+        Vinte anos de produção a serviço da sua autoridade.
+      </p>
+      <div class="service-detail">
+        <span class="detail-tag">Vídeo Institucional</span>
+        <span class="detail-tag">Conteúdo para Redes</span>
+        <span class="detail-tag">Fotografia Editorial</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-number">03</div>
+      <div class="service-name">Presença Continuada</div>
+      <div class="service-subtitle">Gestão de Redes Sociais</div>
+      <p class="service-desc">
+        Consistência é o luxo mais raro no digital. Gerenciamos sua presença
+        para que cada publicação reforce a mesma percepção: a de uma especialista
+        que não precisa se vender, apenas se mostrar. Escala com exclusividade —
+        sem jamais atrair o perfil errado.
+      </p>
+      <div class="service-detail">
+        <span class="detail-tag">Estratégia Editorial</span>
+        <span class="detail-tag">Criação de Conteúdo</span>
+        <span class="detail-tag">Gestão Mensal</span>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-number">04</div>
+      <div class="service-name">Nexa-Ads</div>
+      <div class="service-subtitle">Tráfego Pago de Precisão</div>
+      <p class="service-desc">
+        Anúncios que não apenas geram cliques — segmentam. O medo de crescer
+        e perder o requinte deixa de existir quando cada investimento é direcionado
+        com precisão para quem realmente pertence ao universo da sua clínica.
+      </p>
+      <div class="service-detail">
+        <span class="detail-tag">Meta Ads</span>
+        <span class="detail-tag">Google Ads</span>
+        <span class="detail-tag">Relatórios Mensais</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- PARA QUEM -->
-<section id="para-quem">
-  <p class="section-tag reveal">Para quem é</p>
-  <h2 class="section-title reveal">Você faz um trabalho sério. Sua presença digital precisa <em>refletir</em> isso.</h2>
-  <div class="audience-grid reveal">
-    <div class="audience-card">
-      <div class="aud-icon">🩺</div>
-      <h3>Profissionais de Saúde</h3>
-      <p>Fisioterapeutas, médicos, psicólogos e nutricionistas que precisam de credibilidade online e um fluxo constante de novos pacientes — sem depender só de indicação.</p>
+<section class="for-whom" id="para-quem">
+  <div class="for-whom-header reveal">
+    <h2 class="for-whom-title">
+      A Zyllah é um<br>
+      <em>filtro,</em><br>
+      não uma vitrine.
+    </h2>
+    <p class="for-whom-body">
+      Atendemos um número deliberadamente limitado de clínicas por ciclo.
+      Não por escassez de capacidade — por compromisso com a profundidade
+      de cada parceria. Se você se reconhece nos critérios abaixo,
+      estamos prontos para conversar.
+    </p>
+  </div>
+  <div class="criteria-list">
+    <div class="criteria-item reveal">
+      <div class="criteria-check">—</div>
+      <div class="criteria-title">Você já é referência no físico</div>
+      <p class="criteria-desc">
+        Sua clínica tem reputação consolidada, protocolos de alto valor
+        e uma base de pacientes que te recomenda. O digital precisa
+        apenas refletir o que você já construiu.
+      </p>
     </div>
-    <div class="audience-card">
-      <div class="aud-icon">🏪</div>
-      <h3>Pequenos Negócios</h3>
-      <p>Empreendedores que já têm produto ou serviço validado, mas ainda não conseguiram transformar presença digital em crescimento real e previsível.</p>
+    <div class="criteria-item reveal">
+      <div class="criteria-check">—</div>
+      <div class="criteria-title">Você não quer crescer a qualquer custo</div>
+      <p class="criteria-desc">
+        O objetivo não é volume — é o paciente certo, no momento certo,
+        com a percepção correta do que você entrega.
+        Crescimento sem comprometer o requinte.
+      </p>
     </div>
-    <div class="audience-card">
-      <div class="aud-icon">⚖️</div>
-      <h3>Profissionais Liberais</h3>
-      <p>Advogados, contadores, consultores e especialistas que vendem expertise — e precisam que o digital comunique autoridade antes mesmo do primeiro contato.</p>
+    <div class="criteria-item reveal">
+      <div class="criteria-check">—</div>
+      <div class="criteria-title">Você valoriza tempo acima de tudo</div>
+      <p class="criteria-desc">
+        Você não quer gerenciar agência. Quer uma parceira que entenda
+        seu mercado, tome decisões com autonomia e te apresente resultados —
+        não perguntas.
+      </p>
     </div>
-    <div class="audience-card">
-      <div class="aud-icon">🎯</div>
-      <h3>Negócios em Expansão</h3>
-      <p>Quem já tem clientes satisfeitos mas ainda não escalou porque o marketing não acompanhou o crescimento. É hora de alinhar presença com potencial.</p>
-    </div>
+  </div>
+  <div class="for-whom-footer reveal">
+    <p>
+      Se a sua presença digital atual não reflete
+      <em>quem você é no consultório</em>,
+      é hora de mudar isso.
+    </p>
+    <a href="#diagnostico" class="btn-primary" style="flex-shrink:0; white-space:nowrap;">Solicitar Diagnóstico</a>
   </div>
 </section>
 
-<!-- SERVIÇOS -->
-<section id="servicos">
-  <div class="services-intro">
-    <div>
-      <p class="section-tag reveal">O que entregamos</p>
-      <h2 class="section-title reveal">Serviços que constroem presença <em>real.</em></h2>
-    </div>
-    <p class="reveal">Cada entrega começa com diagnóstico e posicionamento. Porque ferramentas sem estratégia são só custo.</p>
-  </div>
-  <div class="reveal">
-    <div class="service-row">
-      <span class="srv-num">01</span>
-      <span class="srv-name">Identidade Visual</span>
-      <span class="srv-desc">Logo, paleta, tipografia e sistema visual completo. A base que faz sua marca ser reconhecida e lembrada em qualquer formato.</span>
-      <span class="srv-tag">Fundação</span>
-    </div>
-    <div class="service-row">
-      <span class="srv-num">02</span>
-      <span class="srv-name">Gestão de Redes Sociais</span>
-      <span class="srv-desc">Estratégia editorial, criação de conteúdo e gestão ativa. Presença consistente que transforma seguidor em cliente.</span>
-      <span class="srv-tag">Recorrente</span>
-    </div>
-    <div class="service-row">
-      <span class="srv-num">03</span>
-      <span class="srv-name">Produção Audiovisual</span>
-      <span class="srv-desc">Vídeos, reels e conteúdo visual com qualidade de TV. Duas décadas de prática colocadas a serviço da sua marca.</span>
-      <span class="srv-tag">Diferencial</span>
-    </div>
-    <div class="service-row">
-      <span class="srv-num">04</span>
-      <span class="srv-name">Site &amp; Landing Page</span>
-      <span class="srv-desc">Páginas que convertem, não apenas exibem. Design estratégico focado em levar o visitante à ação certa no momento certo.</span>
-      <span class="srv-tag">Conversão</span>
-    </div>
-    <div class="service-row">
-      <span class="srv-num">05</span>
-      <span class="srv-name">Tráfego Pago</span>
-      <span class="srv-desc">Gestão de anúncios no Meta e Google com acompanhamento de métricas reais. Investimento com retorno visível e mensurável.</span>
-      <span class="srv-tag">Performance</span>
-    </div>
-    <div class="service-row">
-      <span class="srv-num">06</span>
-      <span class="srv-name">Estratégia Digital</span>
-      <span class="srv-desc">Diagnóstico completo, posicionamento e plano de ação. Para quem quer parar de improvisar e começar a crescer com direção.</span>
-      <span class="srv-tag">Estratégia</span>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESSO -->
-<section id="processo">
-  <div class="process-intro reveal">
-    <div>
-      <p class="section-tag">Como trabalhamos</p>
-      <h2 class="section-title">Processo claro, entrega <em>previsível.</em></h2>
-    </div>
-    <p>Não acreditamos em sorte criativa. Cada projeto segue um método construído ao longo de duas décadas — do diagnóstico à mensuração de resultado.</p>
-  </div>
-  <div class="process-steps reveal">
-    <div class="process-step">
-      <div class="step-num">01</div>
-      <h3>Diagnóstico</h3>
-      <p>Entendemos seu negócio, público e objetivos antes de qualquer criação. Estratégia primeiro, execução depois.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">02</div>
-      <h3>Posicionamento</h3>
-      <p>Definimos o que você comunica, para quem e como. A diferença entre ser mais um e ser a escolha óbvia.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">03</div>
-      <h3>Criação</h3>
-      <p>Design, conteúdo e audiovisual produzidos com intenção e alinhados à identidade e objetivos reais do negócio.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">04</div>
-      <h3>Resultado</h3>
-      <p>Acompanhamento, métricas e ajustes contínuos. O trabalho não termina na entrega — termina no resultado.</p>
-    </div>
-  </div>
-</section>
-
-<!-- DIFERENCIAIS -->
-<section id="diferenciais">
-  <p class="section-tag reveal">Por que a Zyllah</p>
-  <h2 class="section-title reveal">O que nos torna <em>diferentes.</em></h2>
-  <div class="diff-grid reveal">
-    <div class="diff-card">
-      <div class="diff-icon">🎬</div>
-      <h3>Bagagem Audiovisual Real</h3>
-      <p>Duas décadas em TV, produtoras e edição. Isso se traduz em conteúdo visual com qualidade que a maioria das agências não consegue entregar.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-icon">🧠</div>
-      <h3>Estratégia Antes de Tudo</h3>
-      <p>Não criamos posts vazios. Cada peça tem função dentro de uma estratégia maior de posicionamento e conversão.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-icon">🤝</div>
-      <h3>Parceria, Não Fornecedor</h3>
-      <p>Atendemos poucos clientes com muita atenção. Você não é um ticket — é um projeto que levamos a sério.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-icon">📊</div>
-      <h3>Métricas que Importam</h3>
-      <p>Vaidade não paga conta. Acompanhamos indicadores que conectam presença digital a resultado real no negócio.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-icon">⚡</div>
-      <h3>Execução Ágil</h3>
-      <p>Processo enxuto, comunicação direta e entregas no prazo. Sem burocracia, sem ruído, sem surpresas.</p>
-    </div>
-    <div class="diff-card">
-      <div class="diff-icon">🔄</div>
-      <h3>Evolução Contínua</h3>
-      <p>O mercado muda, sua estratégia acompanha. Revisamos posicionamento e táticas regularmente para manter o crescimento.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATO -->
-<section id="contato">
-  <div class="contact-left reveal">
-    <p class="section-tag">Vamos conversar</p>
-    <h2 class="section-title">Sua marca merece mais do que improviso.</h2>
-    <p>Fale com a gente e descubra o que é possível construir para o seu negócio. Sem enrolação — direto ao ponto.</p>
-  </div>
-  <div class="contact-right reveal">
-    <p class="section-tag">Contato</p>
-    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem;">Pronto para o próximo nível?</h3>
-    <div>
-      <div class="contact-info-item">
-        <span class="ci-label">WhatsApp</span>
-        <span class="ci-value"><a href="https://wa.me/5521967114850" target="_blank">(21) 96711-4850</a></span>
+<!-- DEPOIMENTOS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header reveal">
+      <div>
+        <p class="section-tag" style="color:var(--gold)">O que dizem</p>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,46px); font-weight:300; color:var(--ink); line-height:1.15;">Quem já transborda<br>autoridade no digital</h2>
       </div>
-      <div class="contact-info-item">
-        <span class="ci-label">E-mail</span>
-        <span class="ci-value"><a href="mailto:guilhermeocaetano@gmail.com">guilhermeocaetano@gmail.com</a></span>
+      <span class="testimonials-note">[ substituir por depoimentos reais com nome e bairro ]</span>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">
+          Pela primeira vez sinto que o meu Instagram representa de verdade
+          o nível do que entrego dentro do consultório. As pacientes chegam
+          já com a percepção certa.
+        </p>
+        <div class="testimonial-author">Dra. [Nome] · Dermatologista</div>
+        <div class="testimonial-location">Jardins, São Paulo</div>
+        <div class="placeholder-notice">placeholder — inserir depoimento real</div>
       </div>
-      <div class="contact-info-item">
-        <span class="ci-label">Localização</span>
-        <span class="ci-value">Brasil — atendimento remoto</span>
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">
+          Crescemos em faturamento sem uma única paciente fora do perfil.
+          Isso vale mais do que qualquer número de seguidores.
+        </p>
+        <div class="testimonial-author">Dra. [Nome] · Medicina Estética</div>
+        <div class="testimonial-location">Itaim Bibi, São Paulo</div>
+        <div class="placeholder-notice">placeholder — inserir depoimento real</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <p class="testimonial-text">
+          O vídeo institucional mudou a forma como os pacientes me recebem.
+          Eles chegam preparados para o que vão viver aqui.
+        </p>
+        <div class="testimonial-author">Dr. [Nome] · Cirurgia Plástica</div>
+        <div class="testimonial-location">Moema, São Paulo</div>
+        <div class="placeholder-notice">placeholder — inserir depoimento real</div>
       </div>
     </div>
-    <a href="https://wa.me/5521967114850" class="contact-cta-btn" target="_blank">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Iniciar conversa
-    </a>
   </div>
+</section>
+
+<!-- SOBRE / EXPERIÊNCIA -->
+<section class="experience">
+  <div class="exp-visual reveal">
+    <div class="exp-box-main"><span>Z</span></div>
+    <div class="exp-badge">
+      <div class="exp-badge-num">20+</div>
+      <div class="exp-badge-text">Anos de<br>audiovisual</div>
+    </div>
+  </div>
+  <div class="exp-content reveal">
+    <p class="section-tag">Por que a Zyllah</p>
+    <h2 class="exp-title">
+      Duas décadas de olhar<br>
+      <em>treinado para o requinte.</em>
+    </h2>
+    <p class="exp-text">
+      A Zyllah nasceu da convergência entre vinte anos de produção audiovisual
+      de alto nível e o entendimento profundo de um mercado específico:
+      clínicas boutique e especialistas que atendem a clientela mais exigente de São Paulo.
+    </p>
+    <div class="exp-points">
+      <div class="exp-point">
+        <div class="exp-point-icon"></div>
+        <p class="exp-point-text">Estratégia baseada em dados aliada a um olhar estético preciso — sem concessões em nenhum dos dois.</p>
+      </div>
+      <div class="exp-point">
+        <div class="exp-point-icon"></div>
+        <p class="exp-point-text">Produção audiovisual in-house: nenhum briefing se perde entre agência e fornecedor externo.</p>
+      </div>
+      <div class="exp-point">
+        <div class="exp-point-icon"></div>
+        <p class="exp-point-text">Atendimento que respeita o tempo do especialista — relatórios claros, não reuniões semanais sem pauta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA DIAGNÓSTICO -->
+<section class="diagnostic" id="diagnostico">
+  <span class="diagnostic-tag">O próximo passo</span>
+  <h2 class="diagnostic-title">
+    Solicite seu<br>
+    <em>Diagnóstico Digital</em>
+  </h2>
+  <p class="diagnostic-sub">
+    Uma análise da sua presença atual, dos seus objetivos e de como
+    a Zyllah pode — ou não — ser a parceira certa para onde você quer chegar.
+    Sem compromisso. Com honestidade.
+  </p>
+  <a href="https://wa.me/55" class="btn-diagnostic">Solicitar Diagnóstico</a>
+  <p class="diagnostic-detail">Vagas limitadas · Respondemos em até 48h úteis</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="logo-wrap">
-    <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="38" height="38" fill="#0c0c0e"/>
-      <rect x="0.5" y="0.5" width="37" height="37" stroke="#23232a"/>
-      <line x1="7" y1="10" x2="20" y2="10" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
-      <line x1="20" y1="10" x2="7" y2="28" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
-      <line x1="7" y1="28" x2="20" y2="28" stroke="#d4a853" stroke-width="2" stroke-linecap="round"/>
-      <line x1="23" y1="10" x2="30" y2="19" stroke="#f0ede8" stroke-width="2" stroke-linecap="round"/>
-      <line x1="37" y1="10" x2="30" y2="19" stroke="#f0ede8" stroke-width="2" stroke-linecap="round"/>
-      <line x1="30" y1="19" x2="30" y2="28" stroke="#f0ede8" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span class="logo-wordmark">Zyllah<span>.</span></span>
-  </a>
-  <p class="footer-tagline">"Presença que converte."</p>
-  <p class="footer-copy">© 2025 Zyllah Digital. Todos os direitos reservados.</p>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">ZYLLAH</div>
+      <p class="footer-tagline">Presença digital à altura de quem você é.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#">Identidade Visual</a></li>
+        <li><a href="#">Experiência Sensorial</a></li>
+        <li><a href="#">Presença Continuada</a></li>
+        <li><a href="#">Nexa-Ads</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">E-mail</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Zyllah. Todos os direitos reservados.</p>
+    <p class="footer-location">São Paulo · Brasil</p>
+  </div>
 </footer>
 
 <script>
-  // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+  });
 
-  // Reveal on scroll with stagger
   const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        const children = e.target.querySelectorAll('.audience-card, .diff-card, .process-step, .service-row');
-        children.forEach((child, i) => {
-          child.style.opacity = '0';
-          child.style.transform = 'translateY(16px)';
-          child.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`;
-          setTimeout(() => {
-            child.style.opacity = '1';
-            child.style.transform = 'none';
-          }, i * 80);
-        });
-        obs.unobserve(e.target);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08 });
-
-  reveals.forEach(el => obs.observe(el));
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
