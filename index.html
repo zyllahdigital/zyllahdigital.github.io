@@ -45,10 +45,8 @@
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--gold);
+    font-size: 28px; font-weight: 600;
+    letter-spacing: 0.12em; color: var(--gold);
     text-decoration: none;
   }
   .nav-links { display: flex; gap: 42px; list-style: none; }
@@ -69,10 +67,8 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
   }
   .hero-left {
     background: var(--ink);
@@ -121,14 +117,11 @@
   .hero-right {
     background: var(--cream-mid);
     display: flex; align-items: center; justify-content: center;
-    padding: 120px 80px 100px;
-    position: relative;
+    padding: 120px 80px 100px; position: relative;
   }
   .hero-right::after {
-    content: '';
-    position: absolute; inset: 60px;
-    border: 1px solid rgba(184,151,106,0.2);
-    pointer-events: none;
+    content: ''; position: absolute; inset: 60px;
+    border: 1px solid rgba(184,151,106,0.2); pointer-events: none;
   }
   .hero-stat-block {
     display: flex; flex-direction: column; gap: 56px;
@@ -298,7 +291,7 @@
   .exp-point-icon { flex-shrink: 0; width: 28px; height: 1px; background: var(--gold); margin-top: 11px; }
   .exp-point-text { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
 
-  /* DIAGNÓSTICO CTA */
+  /* CTA */
   .diagnostic {
     background: var(--ink); padding: 140px 60px;
     text-align: center; position: relative; overflow: hidden;
@@ -354,8 +347,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; } to { opacity: 1; }
   }
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
   .reveal.visible { opacity: 1; transform: none; }
@@ -406,7 +398,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <span class="hero-tag">Presença Digital de Alto Padrão — São Paulo</span>
+    <span class="hero-tag">Presença Digital de Alto Padrão</span>
     <h1 class="hero-headline">
       Sua excelência clínica<br>
       <em>traduzida em prestígio</em><br>
@@ -432,8 +424,8 @@
         <div class="stat-label">Foco em estética de alto padrão</div>
       </div>
       <div class="hero-stat">
-        <div class="stat-number">SP</div>
-        <div class="stat-label">Jardins · Itaim · Moema · Vila Nova</div>
+        <div class="stat-number">4</div>
+        <div class="stat-label">Pilares integrados de presença</div>
       </div>
     </div>
   </div>
@@ -499,7 +491,6 @@
         <span class="detail-tag">Aplicações Premium</span>
       </div>
     </div>
-
     <div class="service-card reveal">
       <div class="service-number">02</div>
       <div class="service-name">Experiência Sensorial</div>
@@ -516,7 +507,6 @@
         <span class="detail-tag">Fotografia Editorial</span>
       </div>
     </div>
-
     <div class="service-card reveal">
       <div class="service-number">03</div>
       <div class="service-name">Presença Continuada</div>
@@ -533,7 +523,6 @@
         <span class="detail-tag">Gestão Mensal</span>
       </div>
     </div>
-
     <div class="service-card reveal">
       <div class="service-number">04</div>
       <div class="service-name">Nexa-Ads</div>
@@ -612,9 +601,9 @@
     <div class="testimonials-header reveal">
       <div>
         <p class="section-tag" style="color:var(--gold)">O que dizem</p>
-        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,46px); font-weight:300; color:var(--ink); line-height:1.15;">Quem já transborda<br>autoridade no digital</h2>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,46px); font-weight:300; color:var(--ink); line-height:1.15;">Quem confia<br>na Zyllah</h2>
       </div>
-      <span class="testimonials-note">[ substituir por depoimentos reais com nome e bairro ]</span>
+
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
@@ -624,8 +613,8 @@
           o nível do que entrego dentro do consultório. As pacientes chegam
           já com a percepção certa.
         </p>
-        <div class="testimonial-author">Dra. [Nome] · Dermatologista</div>
-        <div class="testimonial-location">Jardins, São Paulo</div>
+        <div class="testimonial-author">Dra. Thayara · [Especialidade]</div>
+        <div class="testimonial-location">[Localização]</div>
         <div class="placeholder-notice">placeholder — inserir depoimento real</div>
       </div>
       <div class="testimonial-card reveal">
@@ -635,7 +624,7 @@
           Isso vale mais do que qualquer número de seguidores.
         </p>
         <div class="testimonial-author">Dra. [Nome] · Medicina Estética</div>
-        <div class="testimonial-location">Itaim Bibi, São Paulo</div>
+        <div class="testimonial-location">[Localização]</div>
         <div class="placeholder-notice">placeholder — inserir depoimento real</div>
       </div>
       <div class="testimonial-card reveal">
@@ -645,14 +634,14 @@
           Eles chegam preparados para o que vão viver aqui.
         </p>
         <div class="testimonial-author">Dr. [Nome] · Cirurgia Plástica</div>
-        <div class="testimonial-location">Moema, São Paulo</div>
+        <div class="testimonial-location">[Localização]</div>
         <div class="placeholder-notice">placeholder — inserir depoimento real</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOBRE / EXPERIÊNCIA -->
+<!-- SOBRE -->
 <section class="experience">
   <div class="exp-visual reveal">
     <div class="exp-box-main"><span>Z</span></div>
@@ -668,9 +657,8 @@
       <em>treinado para o requinte.</em>
     </h2>
     <p class="exp-text">
-      A Zyllah nasceu da convergência entre vinte anos de produção audiovisual
-      de alto nível e o entendimento profundo de um mercado específico:
-      clínicas boutique e especialistas que atendem a clientela mais exigente de São Paulo.
+      Vinte anos produzindo audiovisual de alto nível. Aplicados agora
+      integralmente a clínicas e especialistas que não aceitam menos do que isso.
     </p>
     <div class="exp-points">
       <div class="exp-point">
@@ -689,7 +677,7 @@
   </div>
 </section>
 
-<!-- CTA DIAGNÓSTICO -->
+<!-- CTA -->
 <section class="diagnostic" id="diagnostico">
   <span class="diagnostic-tag">O próximo passo</span>
   <h2 class="diagnostic-title">
@@ -731,8 +719,8 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 Zyllah. Todos os direitos reservados.</p>
-    <p class="footer-location">São Paulo · Brasil</p>
+    <p class="footer-copy">© 2025 Zyllah Digital. Todos os direitos reservados.</p>
+    <p class="footer-location">Brasil</p>
   </div>
 </footer>
 
