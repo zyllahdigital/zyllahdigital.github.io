@@ -35,7 +35,33 @@
     overflow-x: hidden;
   }
 
-<!-- Google Analytics -->
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+
+</style> <script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+  cookieconsent.run({
+    "notice_banner_type":"simple",
+    "consent_type":"express",
+    "palette":"dark",
+    "language":"pt",
+    "page_load_consent_levels":["strictly-necessary"],
+    "notice_banner_reject_button_hide":false,
+    "preferences_center_close_button_hide":false,
+    "page_refresh_confirmation_buttons":false,
+    "website_name":"Zyllah Digital",
+    "website_privacy_policy_url":"https://zyllahdigital.github.io/#politica"
+  });
+});
+</script>
+
 <script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-JY4TKSQQED"></script>
 <script type="text/plain" data-cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
@@ -43,18 +69,21 @@
   gtag('js', new Date());
   gtag('config', 'G-JY4TKSQQED');
 </script>
-<!-- end of Google Analytics-->
 
-<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
-<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+</head> <body>
+<div id="modalPrivacidade" class="modal-privacidade">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharModal()">&times;</span>
+        <h2>Política de <em>Privacidade</em></h2>
+        <p><strong>Compromisso:</strong> Na Zyllah Digital, a discrição é fundamental. Coletamos dados apenas para melhorar sua experiência.</p>
+        <p><strong>Cookies:</strong> Utilizamos o Google Analytics 4 para entender o tráfego de forma anônima. Você pode gerenciar isso no banner de cookies.</p>
+        <p><strong>Segurança:</strong> Dados de diagnóstico são sigilosos e nunca compartilhados.</p>
+        <p><strong>Contato:</strong> Para dúvidas, utilize nossos canais oficiais no rodapé.</p>
+    </div>
+</div>
 
+<nav id="nav">
 
-
-
-
-<!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
-
-<a href="#" id="open_preferences_center">Update cookies preferences</a>
 
 
   /* NAV */
