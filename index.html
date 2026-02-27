@@ -11,24 +11,53 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Cookie Consent TermsFeed -->
+<!-- Cookie Consent TermsFeed + Fallback nativo -->
 <script src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
 <script charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
-  cookieconsent.run({
-    "notice_banner_type": "simple",
-    "consent_type": "express",
-    "palette": "dark",
-    "language": "pt",
-    "page_load_consent_levels": ["strictly-necessary"],
-    "notice_banner_reject_button_hide": false,
-    "preferences_center_close_button_hide": false,
-    "page_refresh_confirmation_buttons": false,
-    "website_name": "Zyllah Digital",
-    "website_privacy_policy_url": "https://zyllahdigital.github.io/#politica"
-  });
+  if (typeof cookieconsent !== 'undefined') {
+    cookieconsent.run({
+      "notice_banner_type": "simple",
+      "consent_type": "express",
+      "palette": "dark",
+      "language": "pt",
+      "page_load_consent_levels": ["strictly-necessary"],
+      "notice_banner_reject_button_hide": false,
+      "preferences_center_close_button_hide": false,
+      "page_refresh_confirmation_buttons": false,
+      "website_name": "Zyllah Digital",
+      "website_privacy_policy_url": "https://zyllahdigital.github.io/#politica"
+    });
+  } else {
+    if (!localStorage.getItem('zyllah_cookie_consent')) {
+      document.getElementById('cookieBannerFallback').style.display = 'flex';
+    }
+  }
 });
 </script>
+<style>
+  #cookieBannerFallback {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+    background: #1A1714; border-top: 1px solid rgba(184,151,106,0.3);
+    padding: 20px 40px; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  #cookieBannerFallback p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 700px; }
+  #cookieBannerFallback p a { color: #B8976A; text-decoration: underline; cursor: pointer; }
+  .cookie-btn-accept {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+    background: #B8976A; color: #1A1714; border: none;
+    padding: 12px 28px; cursor: pointer; transition: background 0.3s; white-space: nowrap;
+  }
+  .cookie-btn-accept:hover { background: #D4B896; }
+  .cookie-btn-reject {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+    background: transparent; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.2);
+    padding: 12px 28px; cursor: pointer; transition: all 0.3s; white-space: nowrap;
+  }
+  .cookie-btn-reject:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.4); }
+  @media (max-width: 600px) { #cookieBannerFallback { padding: 20px 24px; } }
+</style>
 
 <!-- Google Analytics (ativado só após consentimento) -->
 <script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-JY4TKSQQED"></script>
@@ -355,6 +384,15 @@ document.addEventListener('DOMContentLoaded', function () {
 </head>
 <body>
 
+<!-- Banner Cookies Fallback -->
+<div id="cookieBannerFallback">
+  <p>Utilizamos cookies para melhorar sua experiência e analisar o tráfego do site. Consulte nossa <a onclick="abrirModal()">Política de Privacidade</a>.</p>
+  <div style="display:flex;gap:12px;flex-shrink:0;">
+    <button class="cookie-btn-reject" onclick="rejeitarCookies()">Recusar</button>
+    <button class="cookie-btn-accept" onclick="aceitarCookies()">Aceitar</button>
+  </div>
+</div>
+
 <!-- Modal Política de Privacidade -->
 <div id="modalPrivacidade" class="modal-privacidade">
   <div class="modal-content">
@@ -624,6 +662,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  function aceitarCookies() {
+    localStorage.setItem('zyllah_cookie_consent', 'accepted');
+    document.getElementById('cookieBannerFallback').style.display = 'none';
+  }
+  function rejeitarCookies() {
+    localStorage.setItem('zyllah_cookie_consent', 'rejected');
+    document.getElementById('cookieBannerFallback').style.display = 'none';
+  }
   function abrirModal() { document.getElementById('modalPrivacidade').style.display = 'block'; }
   function fecharModal() { document.getElementById('modalPrivacidade').style.display = 'none'; }
   window.addEventListener('click', e => { if (e.target === document.getElementById('modalPrivacidade')) fecharModal(); });
