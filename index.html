@@ -43,6 +43,28 @@
     overflow-x: hidden;
   }
 
+<!-- Google Analytics -->
+<script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-JY4TKSQQED"></script>
+<script type="text/plain" data-cookie-consent="tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JY4TKSQQED');
+</script>
+<!-- end of Google Analytics-->
+
+<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+
+
+
+
+<!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+<a href="#" id="open_preferences_center">Update cookies preferences</a>
+
+
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -419,9 +441,96 @@
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     .divider { padding: 0 32px; }
   }
+
+/* Estilo do Modal de Privacidade Zyllah */
+.modal-privacidade {
+    display: none; position: fixed; z-index: 10001;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(26, 23, 20, 0.95); /* Ink com transparência */
+    backdrop-filter: blur(10px);
+}
+.modal-content {
+    background-color: var(--cream);
+    margin: 5% auto; padding: 60px;
+    border: 1px solid var(--gold);
+    width: 80%; max-width: 700px;
+    max-height: 80vh; overflow-y: auto;
+    position: relative;
+}
+.close-modal {
+    position: absolute; top: 20px; right: 30px;
+    color: var(--gold); font-size: 30px; cursor: pointer;
+}
+.modal-content h2 { font-family: 'Cormorant Garamond', serif; color: var(--ink); margin-bottom: 20px; }
+.modal-content p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 15px; }
+/* Estilo do Modal de Privacidade Zyllah */
+.modal-privacidade {
+    display: none; position: fixed; z-index: 10001;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(26, 23, 20, 0.95); /* Ink com transparência */
+    backdrop-filter: blur(10px);
+}
+.modal-content {
+    background-color: var(--cream);
+    margin: 5% auto; padding: 60px;
+    border: 1px solid var(--gold);
+    width: 80%; max-width: 700px;
+    max-height: 80vh; overflow-y: auto;
+    position: relative;
+}
+.close-modal {
+    position: absolute; top: 20px; right: 30px;
+    color: var(--gold); font-size: 30px; cursor: pointer;
+}
+.modal-content h2 { font-family: 'Cormorant Garamond', serif; color: var(--ink); margin-bottom: 20px; }
+.modal-content p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 15px; }
+
+
 </style>
 </head>
 <body>
+
+<!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"dark","language":"pt","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"Zyllah Digital","website_privacy_policy_url":"https://zyllahdigital.github.io/#politica"});
+});
+</script>
+
+<div id="modalPrivacidade" class="modal-privacidade">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharModal()">&times;</span>
+        <h2>Política de <em>Privacidade</em></h2>
+        <p><strong>Compromisso:</strong> Na Zyllah Digital, a discrição é fundamental. Coletamos dados apenas para melhorar sua experiência.</p>
+        <p><strong>Cookies:</strong> Utilizamos o Google Analytics 4 para entender o tráfego de forma anônima. Você pode gerenciar isso no banner de cookies.</p>
+        <p><strong>Segurança:</strong> Dados de diagnóstico são sigilosos e nunca compartilhados.</p>
+        <p><strong>Contato:</strong> Para dúvidas, utilize nossos canais oficiais no rodapé.</p>
+    </div>
+</div>
+
+
+<!-- Google Analytics -->
+<script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-JY4TKSQQED"></script>
+<script type="text/plain" data-cookie-consent="tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JY4TKSQQED');
+</script>
+<!-- end of Google Analytics-->
+
+<noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+<!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+
+
+
+
+<!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+<a href="#" id="open_preferences_center">Update cookies preferences</a>
+
 
 <nav id="nav">
   <div class="nav-row-top">
@@ -763,6 +872,7 @@
         <li><a href="#">Instagram</a></li>
         <li><a href="#">WhatsApp</a></li>
         <li><a href="#">E-mail</a></li>
+<li><a href="javascript:void(0)" onclick="abrirModal()">Política de Privacidade</a></li>
       </ul>
     </div>
   </div>
@@ -821,6 +931,8 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
+
+
 </script>
 </body>
 </html>
