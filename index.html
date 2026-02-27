@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zyllah — Presença Digital de Alto Padrão</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1080 1080'><path fill='%23c3a366' d='M336.72,395.72l-2.56-108.02,361.99-.56-139.33,201.49h-45.04l110.91-162.7-.32-2.46-251.57,1.13s-6.53,20.66-9.51,34.27c-3.2,14.6-8.17,36.75-8.17,36.75l-16.4.12Z'/><polygon fill='%23c1a260' points='759.77 286.08 635.69 490.35 606.07 490.52 759.77 286.08'/><path fill='%23c7a866' d='M368.72,571.78c6.36-8.49,19.37-22.49,34.43-35.86,25.37-22.52,52.29-32.93,78.89-35.68,46.33-4.78,93.95,16.68,142.93,17.94,48.53,1.26,74.37-15.75,110.42-42.55-20.82,26.1-56.02,56.17-91.17,61.61-8.66,1.47-16.88,1.46-25.57.7-30.3-2.63-73.16-13.06-106.56-15.9-33.4-1.42-65.74,5.49-96.63,20.78-14.22,7.04-38.42,21.82-46.67,28.94h-.06Z'/><path fill='%23a58346' d='M760.37,680.02l4.22,111.19-383.6,2.71,162.35-235.5h42.43l-135.01,197.18,1.16,3.58,272.41-2.04s6.95-18.53,11.82-39.42c3.94-16.88,6.47-37.43,6.47-37.43l17.73-.28Z'/><polygon fill='%23a38342' points='315.41 790.04 462.38 556.94 495.41 556.77 315.41 790.04'/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;0,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+</style>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -34,8 +38,8 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 28px 60px;
+    display: flex; flex-direction: column;
+    padding: 10px 60px 0;
     background: rgba(26,23,20,0.7);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(184,151,106,0.08);
@@ -44,58 +48,60 @@
   nav.scrolled {
     background: rgba(250,247,242,0.97);
     backdrop-filter: blur(14px);
-    padding: 18px 60px;
     border-bottom: 1px solid rgba(184,151,106,0.18);
   }
-  nav.scrolled .nav-links a { color: var(--ink-soft); }
-  nav.scrolled .nav-links a:hover { color: var(--gold); }
-  nav.scrolled .nav-cta { color: var(--gold); border-color: var(--gold); }
-  nav.scrolled .nav-cta:hover { background: var(--gold); color: var(--white); }
+  .nav-row-top {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; padding-bottom: 8px;
+  }
+  .nav-row-bottom {
+    display: flex; justify-content: center; align-items: center;
+    gap: 48px; padding: 8px 0 10px;
+    border-top: 1px solid rgba(184,151,106,0.1);
+  }
+  nav.scrolled .nav-row-bottom { border-top-color: rgba(184,151,106,0.18); }
   .nav-logo {
-    text-decoration: none; display: flex; align-items: center;
+    text-decoration: none; display: block;
+    width: 250px; height: 76px;
   }
-  .nav-logo-svg {
-    width: 180px; height: 56px; display: block;
-  }
-  .nav-logo-svg svg { width: 100%; height: 100%; }
-  .nav-links { display: flex; gap: 42px; list-style: none; }
-  .nav-links a {
+  .nav-logo svg { width: 100%; height: 100%; }
+  .nav-link {
     font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
     text-transform: uppercase; color: rgba(245,240,232,0.65);
     text-decoration: none; transition: color 0.3s;
   }
-  .nav-links a:hover { color: var(--gold); }
+  nav.scrolled .nav-link { color: var(--ink-soft); }
+  .nav-link:hover { color: var(--gold); }
+  nav.scrolled .nav-link:hover { color: var(--gold); }
   .nav-cta {
     font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--gold);
     text-decoration: none; border: 1px solid var(--gold);
     padding: 10px 24px; transition: all 0.3s;
   }
+  nav.scrolled .nav-cta { color: var(--gold); border-color: var(--gold); }
   .nav-cta:hover { background: var(--gold); color: var(--ink); }
 
   /* HERO */
   .hero {
     min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    position: relative; overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
   }
   .hero-left {
     background: var(--ink);
     display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 120px 80px 100px;
-    position: relative; overflow: hidden;
-    isolation: isolate;
+    padding: 175px 80px 100px;
+    position: relative; overflow: hidden; isolation: isolate;
   }
-  .hero-tag, .hero-headline, .hero-sub, .hero-cta-group {
-    position: relative; z-index: 1;
-  }
-  .hero-left::before { content: none; }
   .hero-z-bg {
-    position: absolute; top: -10%; left: -8%;
-    width: clamp(300px, 60%, 520px);
-    pointer-events: none; user-select: none;
-    z-index: 0; opacity: 1;
+    position: absolute; top: -8%; left: -6%;
+    width: clamp(280px, 58%, 500px);
+    pointer-events: none; user-select: none; z-index: 0;
   }
+  .hero-tag, .hero-headline, .hero-sub, .hero-cta-group { position: relative; z-index: 1; }
   .hero-tag {
     font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
     color: var(--gold); margin-bottom: 32px;
@@ -125,7 +131,6 @@
   }
   .btn-primary:hover { background: var(--gold-light); }
   .hero-note { font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); }
-
   .hero-right {
     background: var(--cream-mid);
     display: flex; align-items: center; justify-content: center;
@@ -163,7 +168,7 @@
   }
   .manifesto-label {
     font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold); padding-top: 8px; position: sticky; top: 100px;
+    color: var(--gold); padding-top: 8px; position: sticky; top: 130px;
   }
   .manifesto-body {
     font-family: 'Cormorant Garamond', serif;
@@ -261,7 +266,6 @@
   .testimonials { background: var(--cream-mid); padding: 120px 60px; }
   .testimonials-inner { max-width: 1200px; margin: 0 auto; }
   .testimonials-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
-  .testimonials-note { font-size: 12px; letter-spacing: 0.08em; color: rgba(184,151,106,0.6); font-style: italic; }
   .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .testimonial-card {
     background: var(--white); padding: 48px 40px;
@@ -274,7 +278,7 @@
   .testimonial-location { font-size: 11px; letter-spacing: 0.12em; color: var(--gold); }
   .placeholder-notice { margin-top: 10px; font-size: 10px; color: rgba(184,151,106,0.45); font-style: italic; }
 
-  /* EXPERIÊNCIA */
+  /* SOBRE */
   .experience {
     padding: 120px 60px; max-width: 1200px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center;
@@ -323,10 +327,7 @@
     max-width: 800px; margin: 0 auto 24px;
   }
   .diagnostic-title em { font-style: italic; color: var(--gold-light); }
-  .diagnostic-sub {
-    font-size: 15px; color: rgba(255,255,255,0.45);
-    line-height: 1.8; max-width: 520px; margin: 0 auto 60px;
-  }
+  .diagnostic-sub { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 520px; margin: 0 auto 60px; }
   .btn-diagnostic {
     display: inline-block; font-size: 11px; font-weight: 400;
     letter-spacing: 0.25em; text-transform: uppercase;
@@ -355,24 +356,23 @@
   .footer-location { font-size: 11px; color: rgba(184,151,106,0.4); letter-spacing: 0.15em; text-transform: uppercase; }
 
   /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
   .reveal.visible { opacity: 1; transform: none; }
+
+  /* SCROLL OFFSET — compensa o nav fixo */
+  section[id] { scroll-margin-top: 120px; }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 24px 32px; }
     nav.scrolled { padding: 16px 32px; }
-    .nav-links { display: none; }
+    .nav-logo { width: 180px; height: 56px; }
+    .nav-row-bottom { gap: 24px; padding: 6px 0 8px; }
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
-    .hero-left { padding: 120px 32px 80px; }
+    .hero-left { padding: 160px 32px 80px; }
     .manifesto { grid-template-columns: 1fr; gap: 32px; padding: 80px 32px; }
     .manifesto-label { position: static; }
     .services { padding: 80px 32px; }
@@ -399,8 +399,8 @@
 <body>
 
 <nav id="nav">
-  <a href="#" class="nav-logo" aria-label="Zyllah Digital">
-    <div class="nav-logo-svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1451.04 1080">
+  <div class="nav-row-top">
+    <a href="#" class="nav-logo" aria-label="Zyllah Digital"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1451.04 1080">
   <g id="Z_CIMA" data-name="Z CIMA">
     <path fill="#c3a366" d="M109.72,379.36l-2.14-89.96,301.48-.47-116.04,167.8h-37.51l92.37-135.5-.26-2.05-209.52.94s-5.44,17.21-7.92,28.54c-2.66,12.16-6.81,30.6-6.81,30.6l-13.66.1Z"/>
   </g>
@@ -433,14 +433,14 @@
     <path fill="#c7a866" d="M1105.2,582.56h-3.24l-28.17,63.2h4.76l8.38-18.85h34.45l9.33,18.85h3.43l-28.93-63.2ZM1088.19,623.13l15.35-35.8,16.89,35.8h-32.25Z"/>
     <polygon fill="#c7a866" points="1176.15 641.19 1176.15 583.52 1171.58 583.52 1171.58 641.19 1171.58 645.76 1176.15 645.76 1212.64 645.76 1212.64 641.19 1176.15 641.19"/>
   </g>
-</svg></div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#para-quem">Para Quem</a></li>
-    <li><a href="#sobre">Sobre</a></li>
-  </ul>
-  <a href="#diagnostico" class="nav-cta">Solicitar Diagnóstico</a>
+</svg></a>
+    <a href="#diagnostico" class="nav-cta">Solicitar Diagnóstico</a>
+  </div>
+  <div class="nav-row-bottom">
+    <a href="#servicos" class="nav-link">Serviços</a>
+    <a href="#para-quem" class="nav-link">Para Quem</a>
+    <a href="#sobre" class="nav-link">Sobre</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -448,19 +448,19 @@
   <div class="hero-left">
     <div class="hero-z-bg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
   <g id="Z_CIMA" data-name="Z CIMA">
-    <path fill="rgba(195,163,102,0.08)" d="M336.72,395.72l-2.56-108.02,361.99-.56-139.33,201.49h-45.04l110.91-162.7-.32-2.46-251.57,1.13s-6.53,20.66-9.51,34.27c-3.2,14.6-8.17,36.75-8.17,36.75l-16.4.12Z"/>
+    <path fill="rgba(195,163,102,0.07)" d="M336.72,395.72l-2.56-108.02,361.99-.56-139.33,201.49h-45.04l110.91-162.7-.32-2.46-251.57,1.13s-6.53,20.66-9.51,34.27c-3.2,14.6-8.17,36.75-8.17,36.75l-16.4.12Z"/>
   </g>
   <g id="Z_TRAÇO_CIMA" data-name="Z TRAÇO CIMA">
-    <polygon fill="rgba(193,162,96,0.07)" points="759.77 286.08 635.69 490.35 606.07 490.52 759.77 286.08"/>
+    <polygon fill="rgba(193,162,96,0.06)" points="759.77 286.08 635.69 490.35 606.07 490.52 759.77 286.08"/>
   </g>
   <g id="TIL">
-    <path fill="rgba(199,168,102,0.08)" d="M368.72,571.78c6.36-8.49,19.37-22.49,34.43-35.86,25.37-22.52,52.29-32.93,78.89-35.68,46.33-4.78,93.95,16.68,142.93,17.94,48.53,1.26,74.37-15.75,110.42-42.55-20.82,26.1-56.02,56.17-91.17,61.61-8.66,1.47-16.88,1.46-25.57.7-30.3-2.63-73.16-13.06-106.56-15.9-33.4-1.42-65.74,5.49-96.63,20.78-14.22,7.04-38.42,21.82-46.67,28.94h-.06Z"/>
+    <path fill="rgba(199,168,102,0.07)" d="M368.72,571.78c6.36-8.49,19.37-22.49,34.43-35.86,25.37-22.52,52.29-32.93,78.89-35.68,46.33-4.78,93.95,16.68,142.93,17.94,48.53,1.26,74.37-15.75,110.42-42.55-20.82,26.1-56.02,56.17-91.17,61.61-8.66,1.47-16.88,1.46-25.57.7-30.3-2.63-73.16-13.06-106.56-15.9-33.4-1.42-65.74,5.49-96.63,20.78-14.22,7.04-38.42,21.82-46.67,28.94h-.06Z"/>
   </g>
   <g id="Z_BAIXO" data-name="Z BAIXO">
-    <path fill="rgba(165,131,70,0.07)" d="M760.37,680.02l4.22,111.19-383.6,2.71,162.35-235.5h42.43l-135.01,197.18,1.16,3.58,272.41-2.04s6.95-18.53,11.82-39.42c3.94-16.88,6.47-37.43,6.47-37.43l17.73-.28Z"/>
+    <path fill="rgba(165,131,70,0.06)" d="M760.37,680.02l4.22,111.19-383.6,2.71,162.35-235.5h42.43l-135.01,197.18,1.16,3.58,272.41-2.04s6.95-18.53,11.82-39.42c3.94-16.88,6.47-37.43,6.47-37.43l17.73-.28Z"/>
   </g>
   <g id="Z_TRAÇO_BAIXO" data-name="Z TRAÇO BAIXO">
-    <polygon fill="rgba(163,131,66,0.06)" points="315.41 790.04 462.38 556.94 495.41 556.77 315.41 790.04"/>
+    <polygon fill="rgba(163,131,66,0.05)" points="315.41 790.04 462.38 556.94 495.41 556.77 315.41 790.04"/>
   </g>
 </svg></div>
     <span class="hero-tag">Presença Digital de Alto Padrão</span>
@@ -544,12 +544,7 @@
       <div class="service-number">01</div>
       <div class="service-name">Identidade Visual</div>
       <div class="service-subtitle">Branding de Alto Padrão</div>
-      <p class="service-desc">
-        Sua marca não comunica o que você faz — comunica o que você representa.
-        Construímos a linguagem visual que precede sua reputação: logotipo,
-        paletas, tipografia e aplicações que traduzem excelência antes de
-        qualquer palavra ser lida.
-      </p>
+      <p class="service-desc">Sua marca não comunica o que você faz — comunica o que você representa. Construímos a linguagem visual que precede sua reputação: logotipo, paletas, tipografia e aplicações que traduzem excelência antes de qualquer palavra ser lida.</p>
       <div class="service-detail">
         <span class="detail-tag">Identidade Primária</span>
         <span class="detail-tag">Brand Book</span>
@@ -560,12 +555,7 @@
       <div class="service-number">02</div>
       <div class="service-name">Experiência Sensorial</div>
       <div class="service-subtitle">Produção Audiovisual</div>
-      <p class="service-desc">
-        O atendimento da sua paciente começa antes do primeiro toque.
-        Criamos conteúdo audiovisual que faz ela sentir o clima da sua clínica,
-        a temperatura do seu cuidado, antes mesmo de atravessar a porta.
-        Vinte anos de produção a serviço da sua autoridade.
-      </p>
+      <p class="service-desc">O atendimento da sua paciente começa antes do primeiro toque. Criamos conteúdo audiovisual que faz ela sentir o clima da sua clínica, a temperatura do seu cuidado, antes mesmo de atravessar a porta. Vinte anos de produção a serviço da sua autoridade.</p>
       <div class="service-detail">
         <span class="detail-tag">Vídeo Institucional</span>
         <span class="detail-tag">Conteúdo para Redes</span>
@@ -576,12 +566,7 @@
       <div class="service-number">03</div>
       <div class="service-name">Presença Continuada</div>
       <div class="service-subtitle">Gestão de Redes Sociais</div>
-      <p class="service-desc">
-        Consistência é o luxo mais raro no digital. Gerenciamos sua presença
-        para que cada publicação reforce a mesma percepção: a de uma especialista
-        que não precisa se vender, apenas se mostrar. Escala com exclusividade —
-        sem jamais atrair o perfil errado.
-      </p>
+      <p class="service-desc">Consistência é o luxo mais raro no digital. Gerenciamos sua presença para que cada publicação reforce a mesma percepção: a de uma especialista que não precisa se vender, apenas se mostrar. Escala com exclusividade — sem jamais atrair o perfil errado.</p>
       <div class="service-detail">
         <span class="detail-tag">Estratégia Editorial</span>
         <span class="detail-tag">Criação de Conteúdo</span>
@@ -592,11 +577,7 @@
       <div class="service-number">04</div>
       <div class="service-name">Nexa-Ads</div>
       <div class="service-subtitle">Tráfego Pago de Precisão</div>
-      <p class="service-desc">
-        Anúncios que não apenas geram cliques — segmentam. O medo de crescer
-        e perder o requinte deixa de existir quando cada investimento é direcionado
-        com precisão para quem realmente pertence ao universo da sua clínica.
-      </p>
+      <p class="service-desc">Anúncios que não apenas geram cliques — segmentam. O medo de crescer e perder o requinte deixa de existir quando cada investimento é direcionado com precisão para quem realmente pertence ao universo da sua clínica.</p>
       <div class="service-detail">
         <span class="detail-tag">Meta Ads</span>
         <span class="detail-tag">Google Ads</span>
@@ -610,53 +591,30 @@
 <section class="for-whom" id="para-quem">
   <div class="for-whom-header reveal">
     <h2 class="for-whom-title">
-      A Zyllah é um<br>
-      <em>filtro,</em><br>
-      não uma vitrine.
+      A Zyllah é um<br><em>filtro,</em><br>não uma vitrine.
     </h2>
-    <p class="for-whom-body">
-      Atendemos um número deliberadamente limitado de clínicas por ciclo.
-      Não por escassez de capacidade — por compromisso com a profundidade
-      de cada parceria. Se você se reconhece nos critérios abaixo,
-      estamos prontos para conversar.
-    </p>
+    <p class="for-whom-body">Atendemos um número deliberadamente limitado de clínicas por ciclo. Não por escassez de capacidade — por compromisso com a profundidade de cada parceria. Se você se reconhece nos critérios abaixo, estamos prontos para conversar.</p>
   </div>
   <div class="criteria-list">
     <div class="criteria-item reveal">
       <div class="criteria-check">—</div>
       <div class="criteria-title">Você já é referência no físico</div>
-      <p class="criteria-desc">
-        Sua clínica tem reputação consolidada, protocolos de alto valor
-        e uma base de pacientes que te recomenda. O digital precisa
-        apenas refletir o que você já construiu.
-      </p>
+      <p class="criteria-desc">Sua clínica tem reputação consolidada, protocolos de alto valor e uma base de pacientes que te recomenda. O digital precisa apenas refletir o que você já construiu.</p>
     </div>
     <div class="criteria-item reveal">
       <div class="criteria-check">—</div>
       <div class="criteria-title">Você não quer crescer a qualquer custo</div>
-      <p class="criteria-desc">
-        O objetivo não é volume — é o paciente certo, no momento certo,
-        com a percepção correta do que você entrega.
-        Crescimento sem comprometer o requinte.
-      </p>
+      <p class="criteria-desc">O objetivo não é volume — é o paciente certo, no momento certo, com a percepção correta do que você entrega. Crescimento sem comprometer o requinte.</p>
     </div>
     <div class="criteria-item reveal">
       <div class="criteria-check">—</div>
       <div class="criteria-title">Você valoriza tempo acima de tudo</div>
-      <p class="criteria-desc">
-        Você não quer gerenciar agência. Quer uma parceira que entenda
-        seu mercado, tome decisões com autonomia e te apresente resultados —
-        não perguntas.
-      </p>
+      <p class="criteria-desc">Você não quer gerenciar agência. Quer uma parceira que entenda seu mercado, tome decisões com autonomia e te apresente resultados — não perguntas.</p>
     </div>
   </div>
   <div class="for-whom-footer reveal">
-    <p>
-      Se a sua presença digital atual não reflete
-      <em>quem você é no consultório</em>,
-      é hora de mudar isso.
-    </p>
-    <a href="#diagnostico" class="btn-primary" style="flex-shrink:0; white-space:nowrap;">Solicitar Diagnóstico</a>
+    <p>Se a sua presença digital atual não reflete <em>quem você é no consultório</em>, é hora de mudar isso.</p>
+    <a href="#diagnostico" class="btn-primary" style="flex-shrink:0;white-space:nowrap;">Solicitar Diagnóstico</a>
   </div>
 </section>
 
@@ -666,38 +624,27 @@
     <div class="testimonials-header reveal">
       <div>
         <p class="section-tag" style="color:var(--gold)">O que dizem</p>
-        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,46px); font-weight:300; color:var(--ink); line-height:1.15;">Quem confia<br>na Zyllah</h2>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,46px);font-weight:300;color:var(--ink);line-height:1.15;">Quem confia<br>na Zyllah</h2>
       </div>
-
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <span class="quote-mark">"</span>
-        <p class="testimonial-text">
-          Pela primeira vez sinto que o meu Instagram representa de verdade
-          o nível do que entrego dentro do consultório. As pacientes chegam
-          já com a percepção certa.
-        </p>
+        <p class="testimonial-text">Pela primeira vez sinto que o meu Instagram representa de verdade o nível do que entrego dentro do consultório. As pacientes chegam já com a percepção certa.</p>
         <div class="testimonial-author">Dra. Thayara · [Especialidade]</div>
         <div class="testimonial-location">[Localização]</div>
         <div class="placeholder-notice">placeholder — inserir depoimento real</div>
       </div>
       <div class="testimonial-card reveal">
         <span class="quote-mark">"</span>
-        <p class="testimonial-text">
-          Crescemos em faturamento sem uma única paciente fora do perfil.
-          Isso vale mais do que qualquer número de seguidores.
-        </p>
+        <p class="testimonial-text">Crescemos em faturamento sem uma única paciente fora do perfil. Isso vale mais do que qualquer número de seguidores.</p>
         <div class="testimonial-author">Dra. [Nome] · Medicina Estética</div>
         <div class="testimonial-location">[Localização]</div>
         <div class="placeholder-notice">placeholder — inserir depoimento real</div>
       </div>
       <div class="testimonial-card reveal">
         <span class="quote-mark">"</span>
-        <p class="testimonial-text">
-          O vídeo institucional mudou a forma como os pacientes me recebem.
-          Eles chegam preparados para o que vão viver aqui.
-        </p>
+        <p class="testimonial-text">O vídeo institucional mudou a forma como os pacientes me recebem. Eles chegam preparados para o que vão viver aqui.</p>
         <div class="testimonial-author">Dr. [Nome] · Cirurgia Plástica</div>
         <div class="testimonial-location">[Localização]</div>
         <div class="placeholder-notice">placeholder — inserir depoimento real</div>
@@ -717,27 +664,12 @@
   </div>
   <div class="exp-content reveal">
     <p class="section-tag">Por que a Zyllah</p>
-    <h2 class="exp-title">
-      Duas décadas de olhar<br>
-      <em>treinado para o requinte.</em>
-    </h2>
-    <p class="exp-text">
-      Vinte anos produzindo audiovisual de alto nível. Aplicados agora
-      integralmente a clínicas e especialistas que não aceitam menos do que isso.
-    </p>
+    <h2 class="exp-title">Duas décadas de olhar<br><em>treinado para o requinte.</em></h2>
+    <p class="exp-text">Vinte anos produzindo audiovisual de alto nível. Aplicados agora integralmente a clínicas e especialistas que não aceitam menos do que isso.</p>
     <div class="exp-points">
-      <div class="exp-point">
-        <div class="exp-point-icon"></div>
-        <p class="exp-point-text">Estratégia baseada em dados aliada a um olhar estético preciso — sem concessões em nenhum dos dois.</p>
-      </div>
-      <div class="exp-point">
-        <div class="exp-point-icon"></div>
-        <p class="exp-point-text">Produção audiovisual in-house: nenhum briefing se perde entre agência e fornecedor externo.</p>
-      </div>
-      <div class="exp-point">
-        <div class="exp-point-icon"></div>
-        <p class="exp-point-text">Atendimento que respeita o tempo do especialista — relatórios claros, não reuniões semanais sem pauta.</p>
-      </div>
+      <div class="exp-point"><div class="exp-point-icon"></div><p class="exp-point-text">Estratégia baseada em dados aliada a um olhar estético preciso — sem concessões em nenhum dos dois.</p></div>
+      <div class="exp-point"><div class="exp-point-icon"></div><p class="exp-point-text">Produção audiovisual in-house: nenhum briefing se perde entre agência e fornecedor externo.</p></div>
+      <div class="exp-point"><div class="exp-point-icon"></div><p class="exp-point-text">Atendimento que respeita o tempo do especialista — relatórios claros, não reuniões semanais sem pauta.</p></div>
     </div>
   </div>
 </section>
@@ -745,15 +677,8 @@
 <!-- CTA -->
 <section class="diagnostic" id="diagnostico">
   <span class="diagnostic-tag">O próximo passo</span>
-  <h2 class="diagnostic-title">
-    Solicite seu<br>
-    <em>Diagnóstico Digital</em>
-  </h2>
-  <p class="diagnostic-sub">
-    Uma análise da sua presença atual, dos seus objetivos e de como
-    a Zyllah pode — ou não — ser a parceira certa para onde você quer chegar.
-    Sem compromisso. Com honestidade.
-  </p>
+  <h2 class="diagnostic-title">Solicite seu<br><em>Diagnóstico Digital</em></h2>
+  <p class="diagnostic-sub">Uma análise da sua presença atual, dos seus objetivos e de como a Zyllah pode — ou não — ser a parceira certa para onde você quer chegar. Sem compromisso. Com honestidade.</p>
   <a href="https://wa.me/55" class="btn-diagnostic">Solicitar Diagnóstico</a>
   <p class="diagnostic-detail">Vagas limitadas · Respondemos em até 48h úteis</p>
 </section>
@@ -828,6 +753,17 @@
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
+  // Smooth scroll interno — funciona tanto no preview quanto no GitHub
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const id = link.getAttribute('href').split('#')[1];
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
