@@ -932,6 +932,15 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
 
+// Funções do Modal de Privacidade
+function abrirModal() { document.getElementById('modalPrivacidade').style.display = 'block'; }
+function fecharModal() { document.getElementById('modalPrivacidade').style.display = 'none'; }
+
+// Fecha o modal se o usuário clicar fora da caixa
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('modalPrivacidade');
+    if (event.target == modal) { modal.style.display = "none"; }
+});
 
 </script>
 </body>
