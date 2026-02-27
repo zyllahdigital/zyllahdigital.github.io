@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zyllah — Exemplos de Posts</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #B8976A; --gold-light: #D4B896; --gold-pale: #F2E8D9;
+    --ink: #1A1714; --ink-soft: #3D3830;
+    --cream: #FAF7F2; --cream-mid: #F0EBE1;
+  }
+  body { font-family: 'Jost', sans-serif; font-weight: 300; background: #0F0D0B; color: var(--cream); padding: 60px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .sub { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; margin-bottom: 60px; }
+  .section-title { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; margin-top: 60px; padding-bottom: 12px; border-bottom: 1px solid rgba(184,151,106,0.2); }
+
+  /* POST GRID */
+  .posts-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .post { flex-shrink: 0; }
+  .post-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 12px; }
+
+  /* 1080x1080 feed */
+  .feed-post {
+    width: 360px; height: 360px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  /* STORIES 1080x1920 = 9:16 */
+  .story-post {
+    width: 202px; height: 360px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+
+  /* POST 01 — Manifesto escuro */
+  .p01 { background: var(--ink); padding: 36px; justify-content: flex-end; }
+  .p01-bg { position: absolute; top: -10%; right: -10%; width: 70%; opacity: 0.04; }
+  .p01-tag { font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; position: relative; z-index: 1; }
+  .p01-text { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: white; line-height: 1.25; position: relative; z-index: 1; }
+  .p01-text em { color: var(--gold-light); font-style: italic; }
+  .p01-line { width: 28px; height: 1px; background: rgba(184,151,106,0.4); margin-top: 20px; position: relative; z-index: 1; }
+  .p01-logo { position: absolute; bottom: 24px; right: 28px; font-size: 7px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(184,151,106,0.4); z-index: 1; }
+
+  /* POST 02 — Número / Stat */
+  .p02 { background: var(--cream-mid); padding: 36px; justify-content: center; align-items: center; text-align: center; }
+  .p02-num { font-family: 'Cormorant Garamond', serif; font-size: 88px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .p02-label { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; }
+  .p02-divider { width: 1px; height: 32px; background: rgba(184,151,106,0.4); margin: 16px auto; }
+
+  /* POST 03 — Citação */
+  .p03 { background: var(--ink); padding: 36px; justify-content: space-between; border: 1px solid rgba(184,151,106,0.1); }
+  .p03-quote { font-family: 'Cormorant Garamond', serif; font-size: 52px; color: var(--gold); line-height: 0.7; display: block; }
+  .p03-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .p03-author { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+  /* POST 04 — Serviço */
+  .p04 { background: var(--ink); padding: 36px; }
+  .p04-num { font-family: 'Cormorant Garamond', serif; font-size: 11px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 24px; opacity: 0.7; }
+  .p04-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: white; margin-bottom: 6px; }
+  .p04-sub { font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .p04-desc { font-size: 11px; line-height: 1.75; color: rgba(255,255,255,0.45); }
+  .p04-tag { display: inline-block; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(184,151,106,0.6); padding: 4px 10px; border: 1px solid rgba(184,151,106,0.2); margin-top: 16px; margin-right: 4px; }
+
+  /* POST 05 — Creme com destaque */
+  .p05 { background: var(--cream); padding: 36px; justify-content: space-between; }
+  .p05-tag { font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
+  .p05-headline { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--ink); line-height: 1.25; }
+  .p05-headline em { color: var(--gold); font-style: italic; }
+  .p05-body { font-size: 11px; line-height: 1.7; color: var(--ink-soft); }
+  .p05-cta { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 8px 16px; display: inline-block; margin-top: 8px; }
+
+  /* STORY 01 */
+  .s01 { background: var(--ink); padding: 28px 24px; justify-content: space-between; }
+  .s01-top { font-size: 7px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(184,151,106,0.5); }
+  .s01-main { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: white; line-height: 1.25; }
+  .s01-main em { color: var(--gold-light); font-style: italic; }
+  .s01-bottom { font-size: 7px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+  /* STORY 02 */
+  .s02 { background: var(--cream-mid); padding: 28px 24px; justify-content: center; align-items: center; text-align: center; }
+  .s02-big { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .s02-label { font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft); margin-top: 16px; line-height: 1.6; }
+  .s02-line { width: 1px; height: 40px; background: rgba(184,151,106,0.3); margin: 16px auto; }
+  .s02-sub { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; font-style: italic; color: var(--ink-soft); }
+
+  /* ANÚNCIO */
+  .ad-post { width: 360px; height: 270px; /* 4:3 */ display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  .ad01 { background: var(--ink); padding: 40px; justify-content: space-between; }
+  .ad01-tag { font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
+  .ad01-headline { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: white; line-height: 1.2; }
+  .ad01-headline em { color: var(--gold-light); font-style: italic; }
+  .ad01-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .ad01-cta { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 10px 20px; }
+  .ad01-note { font-size: 8px; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+
+<h1>Zyllah Digital</h1>
+<p class="sub">Exemplos de posts · Templates de referência · Brand Book v1.1</p>
+
+<!-- FEED POSTS -->
+<div class="section-title">Feed · Instagram (1080×1080 · proporção 1:1)</div>
+<div class="posts-row">
+
+  <div class="post">
+    <div class="post-label">Post 01 · Manifesto</div>
+    <div class="feed-post p01">
+      <svg class="p01-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+        <path fill="white" d="M336.72,395.72l-2.56-108.02,361.99-.56-139.33,201.49h-45.04l110.91-162.7-.32-2.46-251.57,1.13s-6.53,20.66-9.51,34.27c-3.2,14.6-8.17,36.75-8.17,36.75l-16.4.12Z"/>
+        <polygon fill="white" points="759.77 286.08 635.69 490.35 606.07 490.52 759.77 286.08"/>
+        <path fill="white" d="M368.72,571.78c6.36-8.49,19.37-22.49,34.43-35.86,25.37-22.52,52.29-32.93,78.89-35.68,46.33-4.78,93.95,16.68,142.93,17.94,48.53,1.26,74.37-15.75,110.42-42.55-20.82,26.1-56.02,56.17-91.17,61.61-8.66,1.47-16.88,1.46-25.57.7-30.3-2.63-73.16-13.06-106.56-15.9-33.4-1.42-65.74,5.49-96.63,20.78-14.22,7.04-38.42,21.82-46.67,28.94h-.06Z"/>
+        <path fill="white" d="M760.37,680.02l4.22,111.19-383.6,2.71,162.35-235.5h42.43l-135.01,197.18,1.16,3.58,272.41-2.04s6.95-18.53,11.82-39.42c3.94-16.88,6.47-37.43,6.47-37.43l17.73-.28Z"/>
+        <polygon fill="white" points="315.41 790.04 462.38 556.94 495.41 556.77 315.41 790.04"/>
+      </svg>
+      <div class="p01-tag">Manifesto</div>
+      <div class="p01-text">Sua paciente decide<br>antes de atravessar<br><em>a sua porta.</em></div>
+      <div class="p01-line"></div>
+      <div class="p01-logo">Zyllah Digital</div>
+    </div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Post 02 · Estatística</div>
+    <div class="feed-post p02">
+      <div class="p02-num">20+</div>
+      <div class="p02-divider"></div>
+      <div class="p02-label">Anos de audiovisual<br>a serviço da sua<br>autoridade digital</div>
+      <div style="margin-top:20px;font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(61,56,48,0.4);">Zyllah Digital</div>
+    </div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Post 03 · Citação</div>
+    <div class="feed-post p03">
+      <span class="p03-quote">"</span>
+      <div class="p03-text">Crescemos em faturamento sem uma única paciente fora do perfil.</div>
+      <div class="p03-author">Cliente Zyllah · Medicina Estética</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="posts-row">
+
+  <div class="post">
+    <div class="post-label">Post 04 · Serviço</div>
+    <div class="feed-post p04">
+      <div class="p04-num">01 / 04</div>
+      <div>
+        <div class="p04-name">Identidade Visual</div>
+        <div class="p04-sub">Branding de Alto Padrão</div>
+        <div class="p04-desc">Sua marca comunica o que você representa — antes de qualquer palavra ser lida.</div>
+        <span class="p04-tag">Brand Book</span>
+        <span class="p04-tag">Logotipo</span>
+        <span class="p04-tag">Aplicações</span>
+      </div>
+      <div style="font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,151,106,0.3);">Sistema Zyllah · Pilar 01</div>
+    </div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Post 05 · Creme</div>
+    <div class="feed-post p05">
+      <div class="p05-tag">Para quem</div>
+      <div class="p05-headline">A Zyllah é um<br><em>filtro,</em><br>não uma vitrine.</div>
+      <div class="p05-body">Atendemos quem é referência no físico — e precisa ser percebido como tal no digital.</div>
+      <span class="p05-cta">Solicitar Diagnóstico</span>
+    </div>
+  </div>
+
+  <div class="post" style="display:flex;flex-direction:column;gap:24px;">
+    <div>
+      <div class="post-label">Story 01 · Manifesto</div>
+      <div class="story-post s01">
+        <div class="s01-top">Zyllah Digital</div>
+        <div class="s01-main">Não fazemos<br>marketing para<br>clínicas. Construímos<br><em>presença à altura<br>de quem você é.</em></div>
+        <div class="s01-bottom">Solicite seu diagnóstico ↗</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post" style="margin-top:32px;">
+    <div class="post-label">Story 02 · Número</div>
+    <div class="story-post s02">
+      <div class="s02-big">4</div>
+      <div class="s02-line"></div>
+      <div class="s02-label">Pilares integrados<br>de presença digital</div>
+      <div style="margin-top:20px;font-size:7px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(61,56,48,0.4);">Sistema Zyllah</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ANÚNCIOS -->
+<div class="section-title">Anúncios · Meta Ads / Google Display (formato landscape)</div>
+<div class="posts-row">
+
+  <div class="post">
+    <div class="post-label">Anúncio 01 · Lead frio</div>
+    <div class="ad-post ad01">
+      <div class="ad01-tag">Presença Digital · Alto Padrão</div>
+      <div class="ad01-headline">Sua clínica é referência.<br>Seu digital precisa<br><em>dizer isso.</em></div>
+      <div class="ad01-bottom">
+        <span class="ad01-cta">Solicitar Diagnóstico</span>
+        <span class="ad01-note">Vagas limitadas por ciclo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Anúncio 02 · Objeção</div>
+    <div class="ad-post" style="background:var(--cream);padding:40px;justify-content:space-between;">
+      <div style="font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);">Para especialistas</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1.25;">Não é sobre<br>mais seguidores.<br><em style="color:var(--gold);">É sobre o seguidores certos.</em></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:10px 20px;">Saiba mais</span>
+        <span style="font-size:8px;letter-spacing:0.1em;color:rgba(26,23,20,0.3);">Zyllah Digital</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post">
+    <div class="post-label">Anúncio 03 · Prova social</div>
+    <div class="ad-post" style="background:var(--ink);padding:40px;justify-content:space-between;border:1px solid rgba(184,151,106,0.12);">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);line-height:0.7;">"</span>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(255,255,255,0.75);line-height:1.5;">Pela primeira vez sinto que o meu digital representa o nível do que entrego.</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">Dra. — Cliente Zyllah</span>
+        <span style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:8px 16px;">Ver mais</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:60px;padding-top:32px;border-top:1px solid rgba(184,151,106,0.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Zyllah Digital · Exemplos de posts e anúncios · Ref. Brand Book v1.1</p>
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">Fontes: Cormorant Garamond + Jost · Google Fonts · Uso livre</p>
+</div>
+
+</body>
+</html>
