@@ -45,6 +45,36 @@
   }
   .cookie-btn-reject:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.4); }
   @media (max-width: 600px) { #cookieBannerFallback { padding: 20px 24px; } }
+
+  /* ZYLLAH FLOW */
+  .flow { background: var(--cream-mid); padding: 120px 80px; }
+  .flow-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .flow-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+  .flow-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; color: var(--ink); line-height: 1.1; margin-bottom: 24px; }
+  .flow-title em { font-style: italic; color: var(--gold); }
+  .flow-body { font-size: 17px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 36px; max-width: 480px; }
+  .flow-items { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  .flow-item { display: flex; gap: 16px; align-items: flex-start; }
+  .flow-item-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
+  .flow-item-text { font-size: 16px; color: var(--ink-soft); line-height: 1.6; }
+  .flow-cta { display: inline-block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: 16px 36px; text-decoration: none; transition: background 0.3s; }
+  .flow-cta:hover { background: var(--gold); color: var(--ink); }
+  .flow-mockup { background: var(--ink); padding: 0; overflow: hidden; box-shadow: 0 40px 80px rgba(26,23,20,0.2); }
+  .flow-mockup-header { background: rgba(184,151,106,0.1); padding: 16px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(184,151,106,0.15); }
+  .flow-mockup-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  .flow-mockup-name { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+  .flow-msg { padding: 12px 16px; margin: 8px 16px; font-size: 14px; line-height: 1.6; max-width: 80%; border-radius: 2px; }
+  .flow-msg-in { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); align-self: flex-start; margin-right: auto; }
+  .flow-msg-out { background: rgba(184,151,106,0.15); color: rgba(255,255,255,0.85); border-left: 2px solid var(--gold); margin-left: auto; }
+  .flow-mockup { display: flex; flex-direction: column; padding-bottom: 0; }
+  .flow-mockup-indicator { padding: 12px 20px; font-size: 11px; letter-spacing: 0.15em; color: rgba(184,151,106,0.5); display: flex; align-items: center; gap: 8px; border-top: 1px solid rgba(184,151,106,0.1); margin-top: 8px; }
+  .flow-mockup-dot-sm { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  @media (max-width: 900px) {
+    .flow { padding: 80px 32px; }
+    .flow-inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+
 </style>
 
 <script type="text/plain" data-cookie-consent="tracking">
@@ -147,7 +177,7 @@
   }
   .hero-headline em { font-style: italic; color: var(--gold-light); }
   .hero-sub {
-    font-size: 15px; font-weight: 300; line-height: 1.8;
+    font-size: 17px; font-weight: 300; line-height: 1.85;
     color: rgba(255,255,255,0.5); max-width: 400px; margin-bottom: 56px;
     opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
   }
@@ -196,14 +226,14 @@
   }
   .manifesto-body {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 2.5vw, 32px); font-weight: 300; line-height: 1.6; color: var(--ink);
+    font-size: clamp(24px, 2.5vw, 34px); font-weight: 300; line-height: 1.6; color: var(--ink);
   }
   .manifesto-body p + p { margin-top: 1.4em; }
   .manifesto-body em { font-style: italic; color: var(--gold); }
   .manifesto-aside {
     margin-top: 48px; padding-top: 32px;
     border-top: 1px solid rgba(184,151,106,0.3);
-    font-size: 13px; line-height: 1.9; color: var(--ink-soft); font-family: 'Jost', sans-serif;
+    font-size: 16px; line-height: 1.9; color: var(--ink-soft); font-family: 'Jost', sans-serif;
   }
 
   /* SERVIÇOS */
@@ -211,7 +241,7 @@
   .services-header { max-width: 1200px; margin: 0 auto 80px; display: flex; justify-content: space-between; align-items: flex-end; }
   .section-tag { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 300; color: var(--white); line-height: 1.15; }
-  .services-intro { max-width: 360px; font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.4); text-align: right; }
+  .services-intro { max-width: 360px; font-size: 16px; line-height: 1.9; color: rgba(255,255,255,0.4); text-align: right; }
   .services-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
   .service-card {
     background: rgba(255,255,255,0.03); border: 1px solid rgba(184,151,106,0.12);
@@ -223,7 +253,7 @@
   .service-number { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 32px; opacity: 0.7; }
   .service-name { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--white); margin-bottom: 8px; }
   .service-subtitle { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
-  .service-desc { font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.5); }
+  .service-desc { font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.5); }
   .service-detail { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(184,151,106,0.15); display: flex; flex-wrap: wrap; gap: 12px; }
   .detail-tag { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(184,151,106,0.6); padding: 6px 14px; border: 1px solid rgba(184,151,106,0.2); }
 
@@ -232,13 +262,13 @@
   .for-whom-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; align-items: end; }
   .for-whom-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 4.5vw, 58px); font-weight: 300; line-height: 1.1; color: var(--ink); }
   .for-whom-title em { font-style: italic; color: var(--gold); }
-  .for-whom-body { font-size: 15px; line-height: 1.85; color: var(--ink-soft); }
+  .for-whom-body { font-size: 17px; line-height: 1.85; color: var(--ink-soft); }
   .criteria-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
   .criteria-item { padding: 48px 40px; background: var(--cream-mid); border-top: 1px solid rgba(184,151,106,0.3); transition: background 0.3s; }
   .criteria-item:hover { background: var(--gold-pale); }
   .criteria-check { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--gold); margin-bottom: 20px; }
   .criteria-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); margin-bottom: 12px; line-height: 1.2; }
-  .criteria-desc { font-size: 13px; line-height: 1.8; color: var(--ink-soft); }
+  .criteria-desc { font-size: 15px; line-height: 1.8; color: var(--ink-soft); }
   .for-whom-footer { margin-top: 60px; padding: 48px 52px; background: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 40px; }
   .for-whom-footer p { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--white); line-height: 1.4; max-width: 600px; }
   .for-whom-footer em { font-style: italic; color: var(--gold-light); }
@@ -266,11 +296,11 @@
   .exp-badge-text { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-top: 4px; }
   .exp-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 3.5vw, 48px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 28px; }
   .exp-title em { font-style: italic; color: var(--gold); }
-  .exp-text { font-size: 15px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 40px; }
+  .exp-text { font-size: 17px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 40px; }
   .exp-points { display: flex; flex-direction: column; gap: 20px; }
   .exp-point { display: flex; gap: 20px; align-items: flex-start; }
   .exp-point-icon { flex-shrink: 0; width: 28px; height: 1px; background: var(--gold); margin-top: 11px; }
-  .exp-point-text { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+  .exp-point-text { font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
 
   /* CTA */
   .diagnostic { background: var(--ink); padding: 140px 60px; text-align: center; position: relative; overflow: hidden; }
@@ -282,7 +312,7 @@
   .diagnostic-tag { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: block; }
   .diagnostic-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5vw, 68px); font-weight: 300; color: var(--white); line-height: 1.1; max-width: 800px; margin: 0 auto 24px; }
   .diagnostic-title em { font-style: italic; color: var(--gold-light); }
-  .diagnostic-sub { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 520px; margin: 0 auto 60px; }
+  .diagnostic-sub { font-size: 17px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 520px; margin: 0 auto 60px; }
   .btn-diagnostic { display: inline-block; font-size: 11px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 20px 56px; text-decoration: none; transition: all 0.3s; }
   .btn-diagnostic:hover { background: var(--gold-light); letter-spacing: 0.3em; }
   .diagnostic-detail { margin-top: 32px; font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; }
@@ -413,6 +443,7 @@
     <polygon fill="#c7a866" points="1176.15 641.19 1176.15 583.52 1171.58 583.52 1171.58 641.19 1171.58 645.76 1176.15 645.76 1212.64 645.76 1212.64 641.19 1176.15 641.19"/>
   </g>
 </svg></a>
+    <a href="#flow" style="font-size:12px;letter-spacing:0.12em;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#B8976A'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Zyllah Flow</a>
     <a href="#diagnostico" class="nav-cta">Solicitar Diagnóstico</a>
   </div>
   <div class="nav-row-bottom">
@@ -545,6 +576,41 @@
       <div class="exp-point"><div class="exp-point-icon"></div><p class="exp-point-text">Estratégia baseada em dados aliada a um olhar estético preciso — sem concessões em nenhum dos dois.</p></div>
       <div class="exp-point"><div class="exp-point-icon"></div><p class="exp-point-text">Produção audiovisual in-house: nenhum briefing se perde entre agência e fornecedor externo.</p></div>
       <div class="exp-point"><div class="exp-point-icon"></div><p class="exp-point-text">Atendimento que respeita o tempo do especialista — relatórios claros, não reuniões semanais sem pauta.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ZYLLAH FLOW -->
+<section class="flow" id="flow">
+  <div class="flow-inner">
+    <div class="flow-left reveal">
+      <span class="flow-tag">Zyllah Flow</span>
+      <h2 class="flow-title">Atendimento<br><em>inteligente,</em><br>24 horas.</h2>
+      <p class="flow-body">Sua paciente entra em contato às 23h. Não há recepcionista. Há o Zyllah Flow — um sistema de atendimento automatizado via WhatsApp que qualifica, responde e agenda com a sofisticação que sua clínica exige.</p>
+      <div class="flow-items">
+        <div class="flow-item"><div class="flow-item-dot"></div><div class="flow-item-text">Qualificação automática de leads por perfil</div></div>
+        <div class="flow-item"><div class="flow-item-dot"></div><div class="flow-item-text">Agendamento integrado ao seu calendário</div></div>
+        <div class="flow-item"><div class="flow-item-dot"></div><div class="flow-item-text">Respostas com a voz da sua clínica, 24h por dia</div></div>
+        <div class="flow-item"><div class="flow-item-dot"></div><div class="flow-item-text">Follow-up pós-atendimento automatizado</div></div>
+      </div>
+      <a href="#diagnostico" class="flow-cta">Conhecer o Zyllah Flow</a>
+    </div>
+    <div class="flow-right reveal">
+      <div class="flow-mockup">
+        <div class="flow-mockup-header">
+          <div class="flow-mockup-dot"></div>
+          <div class="flow-mockup-name">Clínica · WhatsApp</div>
+        </div>
+        <div class="flow-msg flow-msg-in">Boa noite! Gostaria de agendar uma avaliação.</div>
+        <div class="flow-msg flow-msg-out">Olá. Que bom ter seu contato. Para que eu possa direcionar melhor — qual é o seu principal objetivo com a consulta?</div>
+        <div class="flow-msg flow-msg-in">Estou buscando tratamento para...</div>
+        <div class="flow-msg flow-msg-out">Perfeito. Temos disponibilidade na terça-feira às 14h e quinta-feira às 10h. Qual prefere?</div>
+        <div class="flow-mockup-indicator">
+          <span class="flow-mockup-dot-sm"></span>
+          Zyllah Flow · Ativo
+        </div>
+      </div>
     </div>
   </div>
 </section>

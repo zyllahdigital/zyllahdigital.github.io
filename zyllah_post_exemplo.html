@@ -12,89 +12,89 @@
     --ink: #1A1714; --ink-soft: #3D3830;
     --cream: #FAF7F2; --cream-mid: #F0EBE1;
   }
-  body { font-family: 'Jost', sans-serif; font-weight: 300; background: #0F0D0B; color: var(--cream); padding: 60px; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .sub { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; margin-bottom: 60px; }
-  .section-title { font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; margin-top: 60px; padding-bottom: 12px; border-bottom: 1px solid rgba(184,151,106,0.2); }
+  body { font-family: 'Jost', sans-serif; font-weight: 300; background: #0F0D0B; color: var(--cream); padding: 60px; font-size: 17px; line-height: 1.85; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .sub { font-size: 14px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; margin-bottom: 60px; }
+  .section-title { font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; margin-top: 60px; padding-bottom: 12px; border-bottom: 1px solid rgba(184,151,106,0.2); }
 
   /* POST GRID */
   .posts-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
   .post { flex-shrink: 0; }
-  .post-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 12px; }
+  .post-label { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 12px; }
 
   /* 1080x1080 feed */
   .feed-post {
-    width: 360px; height: 360px;
+    width: 420px; height: 420px;
     display: flex; flex-direction: column;
     position: relative; overflow: hidden;
   }
   /* STORIES 1080x1920 = 9:16 */
   .story-post {
-    width: 202px; height: 360px;
+    width: 236px; height: 420px;
     display: flex; flex-direction: column;
     position: relative; overflow: hidden;
   }
 
   /* POST 01 — Manifesto escuro */
-  .p01 { background: var(--ink); padding: 36px; justify-content: flex-end; }
+  .p01 { background: var(--ink); padding: 40px; justify-content: flex-end; }
   .p01-bg { position: absolute; top: -10%; right: -10%; width: 70%; opacity: 0.04; }
-  .p01-tag { font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; position: relative; z-index: 1; }
-  .p01-text { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: white; line-height: 1.25; position: relative; z-index: 1; }
+  .p01-tag { font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; position: relative; z-index: 1; }
+  .p01-text { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: white; line-height: 1.25; position: relative; z-index: 1; }
   .p01-text em { color: var(--gold-light); font-style: italic; }
   .p01-line { width: 28px; height: 1px; background: rgba(184,151,106,0.4); margin-top: 20px; position: relative; z-index: 1; }
-  .p01-logo { position: absolute; bottom: 24px; right: 28px; font-size: 7px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(184,151,106,0.4); z-index: 1; }
+  .p01-logo { position: absolute; bottom: 24px; right: 28px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(184,151,106,0.4); z-index: 1; }
 
   /* POST 02 — Número / Stat */
-  .p02 { background: var(--cream-mid); padding: 36px; justify-content: center; align-items: center; text-align: center; }
-  .p02-num { font-family: 'Cormorant Garamond', serif; font-size: 88px; font-weight: 300; color: var(--gold); line-height: 1; }
-  .p02-label { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; }
+  .p02 { background: var(--cream-mid); padding: 40px; justify-content: center; align-items: center; text-align: center; }
+  .p02-num { font-family: 'Cormorant Garamond', serif; font-size: 108px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .p02-label { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; }
   .p02-divider { width: 1px; height: 32px; background: rgba(184,151,106,0.4); margin: 16px auto; }
 
   /* POST 03 — Citação */
-  .p03 { background: var(--ink); padding: 36px; justify-content: space-between; border: 1px solid rgba(184,151,106,0.1); }
+  .p03 { background: var(--ink); padding: 40px; justify-content: space-between; border: 1px solid rgba(184,151,106,0.1); }
   .p03-quote { font-family: 'Cormorant Garamond', serif; font-size: 52px; color: var(--gold); line-height: 0.7; display: block; }
-  .p03-text { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.5; }
-  .p03-author { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .p03-text { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-style: italic; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .p03-author { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 
   /* POST 04 — Serviço */
-  .p04 { background: var(--ink); padding: 36px; }
+  .p04 { background: var(--ink); padding: 40px; }
   .p04-num { font-family: 'Cormorant Garamond', serif; font-size: 11px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 24px; opacity: 0.7; }
-  .p04-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: white; margin-bottom: 6px; }
-  .p04-sub { font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-  .p04-desc { font-size: 11px; line-height: 1.75; color: rgba(255,255,255,0.45); }
-  .p04-tag { display: inline-block; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(184,151,106,0.6); padding: 4px 10px; border: 1px solid rgba(184,151,106,0.2); margin-top: 16px; margin-right: 4px; }
+  .p04-name { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 400; color: white; margin-bottom: 6px; }
+  .p04-sub { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .p04-desc { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.45); }
+  .p04-tag { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(184,151,106,0.6); padding: 4px 10px; border: 1px solid rgba(184,151,106,0.2); margin-top: 16px; margin-right: 4px; }
 
   /* POST 05 — Creme com destaque */
-  .p05 { background: var(--cream); padding: 36px; justify-content: space-between; }
-  .p05-tag { font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
-  .p05-headline { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--ink); line-height: 1.25; }
+  .p05 { background: var(--cream); padding: 40px; justify-content: space-between; }
+  .p05-tag { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
+  .p05-headline { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--ink); line-height: 1.25; }
   .p05-headline em { color: var(--gold); font-style: italic; }
-  .p05-body { font-size: 11px; line-height: 1.7; color: var(--ink-soft); }
-  .p05-cta { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 8px 16px; display: inline-block; margin-top: 8px; }
+  .p05-body { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+  .p05-cta { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 8px 16px; display: inline-block; margin-top: 8px; }
 
   /* STORY 01 */
-  .s01 { background: var(--ink); padding: 28px 24px; justify-content: space-between; }
-  .s01-top { font-size: 7px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(184,151,106,0.5); }
-  .s01-main { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: white; line-height: 1.25; }
+  .s01 { background: var(--ink); padding: 32px 28px; justify-content: space-between; }
+  .s01-top { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(184,151,106,0.5); }
+  .s01-main { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: white; line-height: 1.25; }
   .s01-main em { color: var(--gold-light); font-style: italic; }
-  .s01-bottom { font-size: 7px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .s01-bottom { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 
   /* STORY 02 */
-  .s02 { background: var(--cream-mid); padding: 28px 24px; justify-content: center; align-items: center; text-align: center; }
-  .s02-big { font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 300; color: var(--gold); line-height: 1; }
-  .s02-label { font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft); margin-top: 16px; line-height: 1.6; }
+  .s02 { background: var(--cream-mid); padding: 32px 28px; justify-content: center; align-items: center; text-align: center; }
+  .s02-big { font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 300; color: var(--gold); line-height: 1; }
+  .s02-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft); margin-top: 16px; line-height: 1.6; }
   .s02-line { width: 1px; height: 40px; background: rgba(184,151,106,0.3); margin: 16px auto; }
   .s02-sub { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; font-style: italic; color: var(--ink-soft); }
 
   /* ANÚNCIO */
-  .ad-post { width: 360px; height: 270px; /* 4:3 */ display: flex; flex-direction: column; position: relative; overflow: hidden; }
-  .ad01 { background: var(--ink); padding: 40px; justify-content: space-between; }
-  .ad01-tag { font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
-  .ad01-headline { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: white; line-height: 1.2; }
+  .ad-post { width: 420px; height: 315px; /* 4:3 */ display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  .ad01 { background: var(--ink); padding: 44px; justify-content: space-between; }
+  .ad01-tag { font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
+  .ad01-headline { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; color: white; line-height: 1.2; }
   .ad01-headline em { color: var(--gold-light); font-style: italic; }
   .ad01-bottom { display: flex; justify-content: space-between; align-items: center; }
-  .ad01-cta { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 10px 20px; }
-  .ad01-note { font-size: 8px; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
+  .ad01-cta { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; background: var(--gold); color: var(--ink); padding: 10px 20px; }
+  .ad01-note { font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
 </style>
 </head>
 <body>

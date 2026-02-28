@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zyllah Digital — Hub de Documentos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #B8976A; --gold-light: #D4B896;
+    --ink: #1A1714; --ink-soft: #3D3830;
+    --cream: #FAF7F2; --cream-mid: #F0EBE1;
+  }
+  body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--ink); color: var(--cream); min-height: 100vh; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 80px 48px; }
+
+  /* HEADER */
+  .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 72px; }
+  .top-logo svg { width: 120px; height: auto; }
+  .top-meta { text-align: right; }
+  .top-meta p { font-size: 12px; letter-spacing: 0.15em; color: rgba(255,255,255,0.2); line-height: 1.8; }
+
+  .hero-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: white; line-height: 1.05; margin-bottom: 16px; }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.35); line-height: 1.8; max-width: 520px; margin-bottom: 60px; }
+
+  /* SEÇÕES */
+  .secao { margin-bottom: 56px; }
+  .secao-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(184,151,106,0.15); }
+
+  /* CARDS */
+  .cards { display: flex; flex-direction: column; gap: 2px; }
+  .card {
+    display: flex; align-items: stretch;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(184,151,106,0.1);
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+  .card:hover { background: rgba(184,151,106,0.06); border-color: rgba(184,151,106,0.35); transform: translateX(4px); }
+  .card-accent { width: 3px; background: rgba(184,151,106,0.25); flex-shrink: 0; transition: background 0.2s; }
+  .card:hover .card-accent { background: var(--gold); }
+  .card-body { padding: 24px 28px; flex: 1; }
+  .card-tag { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; display: block; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: white; margin-bottom: 4px; }
+  .card-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+  .card-right { padding: 24px 28px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .card-badge { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(184,151,106,0.2); color: rgba(184,151,106,0.6); }
+  .card-badge.github { border-color: rgba(100,160,100,0.3); color: rgba(100,200,100,0.6); }
+  .card-arrow { color: rgba(184,151,106,0.4); font-size: 18px; transition: transform 0.2s; }
+  .card:hover .card-arrow { transform: translateX(4px); color: var(--gold); }
+
+  /* NOTA GITHUB */
+  .nota-github { background: rgba(100,180,100,0.05); border: 1px solid rgba(100,180,100,0.15); padding: 24px 28px; margin-top: 48px; }
+  .nota-github h4 { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(120,200,120,0.7); margin-bottom: 12px; }
+  .nota-github p { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+  .nota-github code { font-size: 13px; background: rgba(255,255,255,0.06); padding: 2px 8px; color: rgba(200,230,200,0.7); font-family: monospace; }
+
+  .ornamento { display: flex; align-items: center; gap: 20px; margin: 48px 0; }
+  .ornamento-linha { flex: 1; height: 1px; background: rgba(184,151,106,0.1); }
+  .ornamento-mark { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: rgba(184,151,106,0.3); }
+
+  .rodape { margin-top: 80px; padding-top: 32px; border-top: 1px solid rgba(184,151,106,0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .rodape p { font-size: 12px; color: rgba(255,255,255,0.15); letter-spacing: 0.08em; }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 48px 24px; }
+    .hero-title { font-size: 36px; }
+    .top { flex-direction: column; gap: 24px; }
+    .top-meta { text-align: left; }
+    .card-right { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="top-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+        <path fill="#c3a366" d="M336.72,395.72l-2.56-108.02,361.99-.56-139.33,201.49h-45.04l110.91-162.7-.32-2.46-251.57,1.13s-6.53,20.66-9.51,34.27c-3.2,14.6-8.17,36.75-8.17,36.75l-16.4.12Z"/>
+        <polygon fill="#c1a260" points="759.77 286.08 635.69 490.35 606.07 490.52 759.77 286.08"/>
+        <path fill="#c7a866" d="M368.72,571.78c6.36-8.49,19.37-22.49,34.43-35.86,25.37-22.52,52.29-32.93,78.89-35.68,46.33-4.78,93.95,16.68,142.93,17.94,48.53,1.26,74.37-15.75,110.42-42.55-20.82,26.1-56.02,56.17-91.17,61.61-8.66,1.47-16.88,1.46-25.57.7-30.3-2.63-73.16-13.06-106.56-15.9-33.4-1.42-65.74,5.49-96.63,20.78-14.22,7.04-38.42,21.82-46.67,28.94h-.06Z"/>
+        <path fill="#a58346" d="M760.37,680.02l4.22,111.19-383.6,2.71,162.35-235.5h42.43l-135.01,197.18,1.16,3.58,272.41-2.04s6.95-18.53,11.82-39.42c3.94-16.88,6.47-37.43,6.47-37.43l17.73-.28Z"/>
+        <polygon fill="#a38342" points="315.41 790.04 462.38 556.94 495.41 556.77 315.41 790.04"/>
+      </svg>
+    </div>
+    <div class="top-meta">
+      <p>Hub de Documentos<br>Uso interno · 2026<br>zyllahdigital.github.io</p>
+    </div>
+  </div>
+
+  <span class="hero-tag">Zyllah Digital · Central de Materiais</span>
+  <h1 class="hero-title">Todos os<br><em>documentos</em></h1>
+  <p class="hero-sub">Hub interno para acesso rápido a todos os arquivos da Zyllah. Mantenha esta página salva — é o ponto de partida para qualquer produção.</p>
+
+  <!-- IDENTIDADE -->
+  <div class="secao">
+    <div class="secao-label">Identidade de Marca</div>
+    <div class="cards">
+
+      <a class="card" href="zyllah_brandbook.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">Brand Book · v1.1</span>
+          <div class="card-title">Manual de Marca</div>
+          <div class="card-desc">Identidade completa: logo, cores, tipografia, voz, aplicações, Zyllah Flow. 10 seções.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Local</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="zyllah_post_exemplo.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">Templates Visuais</span>
+          <div class="card-title">Exemplos de Posts e Anúncios</div>
+          <div class="card-desc">5 posts feed, 2 stories, 3 anúncios — todos all-type, todos dentro da identidade Zyllah.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Local</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CLIENTE -->
+  <div class="secao">
+    <div class="secao-label">Ferramentas de Cliente</div>
+    <div class="cards">
+
+      <a class="card" href="zyllah_briefing_rapido.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">Briefing · Versão Rápida</span>
+          <div class="card-title">Briefing de Identidade — 15 Perguntas</div>
+          <div class="card-desc">Formulário interativo, uma pergunta por tela, ~10 minutos. Envio por e-mail automático. Enviar para o cliente antes da sessão de alinhamento.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Enviar ao cliente</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="zyllah_briefing.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">Briefing · Versão Completa</span>
+          <div class="card-title">Briefing de Identidade — 30 Perguntas</div>
+          <div class="card-desc">Documento completo para sessão presencial ou enviado a clientes que queiram se aprofundar. Inclui bloco de aprovação com assinatura.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Sessão presencial</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- SITE -->
+  <div class="secao">
+    <div class="secao-label">Site Oficial</div>
+    <div class="cards">
+
+      <a class="card" href="https://zyllahdigital.github.io" target="_blank">
+        <div class="card-accent" style="background:rgba(100,180,100,0.4);"></div>
+        <div class="card-body">
+          <span class="card-tag" style="color:rgba(120,200,120,0.8);">GitHub Pages · Ao vivo</span>
+          <div class="card-title">zyllahdigital.github.io</div>
+          <div class="card-desc">Site oficial da Zyllah Digital. Subir como index.html no repositório zyllahdigital.github.io.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge github">Online</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="zyllah_v6.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">Site · Arquivo local</span>
+          <div class="card-title">zyllah_v6.html — Preview local</div>
+          <div class="card-desc">Versão mais recente do site para revisão antes de subir ao GitHub. Inclui Cookiebot LGPD, GA4, WhatsApp.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Preview</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+
+      <a class="card" href="zyllah_producao_docs.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">Produção + Abordagem</span>
+          <div class="card-title">Docs Audiovisuais + Mensagem Dra. Thayara</div>
+          <div class="card-desc">Autorização de imagem, ambiente e NDA prontos para assinar. Mensagens de abordagem para WhatsApp e Instagram.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Operacional</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="secao">
+    <div class="secao-label">Estratégia de Conteúdo</div>
+    <div class="cards">
+
+      <a class="card" href="zyllah_conteudo_instagram.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">Instagram · 3x semana</span>
+          <div class="card-title">Banco de Textos — Instagram</div>
+          <div class="card-desc">Calendário editorial + textos prontos organizados por tipo: manifesto, serviço, prova social, bastidor, educativo.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Conteúdo</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="zyllah_conteudo_linkedin.html" target="_blank">
+        <div class="card-accent"></div>
+        <div class="card-body">
+          <span class="card-tag">LinkedIn · Estratégia Zyllah</span>
+          <div class="card-title">Banco de Textos — LinkedIn</div>
+          <div class="card-desc">Estratégia, cadência e textos prontos para posicionamento de autoridade no LinkedIn — como agência e como fundador.</div>
+        </div>
+        <div class="card-right">
+          <span class="card-badge">Conteúdo</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="nota-github">
+    <h4>Como usar no GitHub Pages</h4>
+    <p>
+      Apenas o site (<code>zyllah_v6.html</code> renomeado para <code>index.html</code>) vai para o repositório público <code>zyllahdigital.github.io</code>. Todos os outros arquivos são de uso interno — mantenha-os localmente ou em uma pasta privada. Para subir o site: renomeie o arquivo para <code>index.html</code>, faça upload no repositório e aguarde 1–2 minutos para publicar em <code>https://zyllahdigital.github.io</code>.
+    </p>
+  </div>
+
+  <div class="ornamento"><div class="ornamento-linha"></div><div class="ornamento-mark">✦</div><div class="ornamento-linha"></div></div>
+
+  <div class="rodape">
+    <p>Zyllah Digital · Hub de Documentos · 2026</p>
+    <p>Uso interno · Confidencial</p>
+  </div>
+
+</div>
+</body>
+</html>
