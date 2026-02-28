@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zyllah · Prospect — Dra. Thayara</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #B8976A; --gold-light: #D4B896;
+    --ink: #1A1714; --ink-soft: #3D3830;
+    --cream: #FAF7F2; --cream-mid: #F0EBE1;
+    --purple: #8A7A9B; --purple-soft: rgba(138,122,155,0.15);
+  }
+  body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--ink); color: var(--cream); font-size: 17px; line-height: 1.85; }
+
+  .header { background: var(--ink); padding: 56px 80px 48px; border-bottom: 1px solid rgba(138,122,155,0.15); position: relative; overflow: hidden; }
+  .header-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(138,122,155,0.06) 0%, transparent 70%); pointer-events: none; }
+  .header-tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .header-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--purple); }
+  .header-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: white; line-height: 1.05; margin-bottom: 12px; }
+  .header-title em { font-style: italic; color: rgba(200,185,220,0.8); }
+  .header-sub { font-size: 16px; color: rgba(255,255,255,0.3); max-width: 580px; line-height: 1.8; }
+  .header-meta { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .header-meta-item { font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; }
+  .header-meta-item strong { color: rgba(200,185,220,0.6); font-weight: 400; }
+
+  .corpo { max-width: 860px; margin: 0 auto; padding: 64px 60px; }
+
+  /* CONTEXTO */
+  .contexto { background: var(--purple-soft); border: 1px solid rgba(138,122,155,0.2); padding: 40px 48px; margin-bottom: 56px; }
+  .contexto-tag { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; display: block; }
+  .contexto-titulo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: white; margin-bottom: 20px; }
+  .contexto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .contexto-item-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,122,155,0.7); margin-bottom: 6px; }
+  .contexto-item-val { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* ESTRATÉGIA */
+  .estrategia { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 48px; }
+  .est { padding: 28px 32px; }
+  .est.do { background: rgba(122,155,138,0.06); border-top: 2px solid rgba(122,155,138,0.5); }
+  .est.dont { background: rgba(200,80,80,0.04); border-top: 2px solid rgba(200,80,80,0.3); }
+  .est h4 { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 14px; }
+  .est.do h4 { color: rgba(122,200,155,0.7); }
+  .est.dont h4 { color: rgba(220,100,100,0.7); }
+  .est ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .est ul li { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6; padding-left: 16px; position: relative; }
+  .est.do ul li::before { content: '✓'; position: absolute; left: 0; color: rgba(122,200,155,0.6); font-size: 11px; top: 2px; }
+  .est.dont ul li::before { content: '✕'; position: absolute; left: 0; color: rgba(220,100,100,0.5); font-size: 11px; top: 2px; }
+
+  /* TABS */
+  .canal-tab { display: flex; gap: 2px; margin-bottom: 2px; }
+  .canal-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 24px; border: none; cursor: pointer; font-family: 'Jost', sans-serif; transition: all 0.2s; }
+  .canal-btn.ativo { background: var(--purple); color: white; }
+  .canal-btn:not(.ativo) { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.35); }
+  .canal-btn:hover:not(.ativo) { background: rgba(138,122,155,0.15); }
+
+  .msg-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(138,122,155,0.12); padding: 36px; }
+  .msg-box.oculto { display: none; }
+  .msg-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,122,155,0.6); margin-bottom: 20px; }
+  .msg-texto { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.9; white-space: pre-line; }
+  .msg-texto strong { color: white; }
+  .msg-nota { font-size: 13px; color: rgba(255,255,255,0.2); margin-top: 24px; font-style: italic; line-height: 1.65; padding-top: 16px; border-top: 1px solid rgba(138,122,155,0.1); }
+  .btn-copiar-msg {
+    margin-top: 20px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    background: transparent; border: 1px solid rgba(138,122,155,0.3);
+    color: var(--purple); padding: 10px 24px; cursor: pointer;
+    transition: all 0.2s; font-family: 'Jost', sans-serif; display: inline-block;
+  }
+  .btn-copiar-msg:hover { background: rgba(138,122,155,0.12); }
+  .btn-copiar-msg.copiado { border-color: rgba(122,155,138,0.5); color: rgba(122,200,155,0.7); }
+
+  /* PRÓXIMOS PASSOS */
+  .passos { margin-top: 56px; }
+  .passos-titulo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: white; margin-bottom: 24px; }
+  .passos-titulo em { font-style: italic; color: rgba(200,185,220,0.7); }
+  .passo { display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid rgba(138,122,155,0.1); }
+  .passo:last-child { border-bottom: none; }
+  .passo-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: rgba(138,122,155,0.4); line-height: 1; flex-shrink: 0; width: 40px; }
+  .passo-corpo { flex: 1; }
+  .passo-titulo { font-size: 16px; color: white; margin-bottom: 4px; font-weight: 400; }
+  .passo-desc { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; }
+  .passo-link { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--purple); text-decoration: none; margin-top: 8px; display: inline-block; border-bottom: 1px solid rgba(138,122,155,0.3); padding-bottom: 2px; }
+
+  /* PILOTO */
+  .piloto { background: rgba(138,122,155,0.08); border: 1px solid rgba(138,122,155,0.2); padding: 40px 48px; margin-top: 48px; }
+  .piloto-tag { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; display: block; }
+  .piloto-titulo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: white; margin-bottom: 12px; }
+  .piloto-titulo em { font-style: italic; color: rgba(200,185,220,0.7); }
+  .piloto-desc { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.85; margin-bottom: 24px; max-width: 640px; }
+  .piloto-conds { display: flex; gap: 32px; flex-wrap: wrap; }
+  .piloto-cond { }
+  .piloto-cond-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,122,155,0.6); margin-bottom: 4px; }
+  .piloto-cond-val { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: white; }
+  .piloto-cond-val s { color: rgba(255,255,255,0.2); font-size: 18px; }
+  .piloto-contrapartidas { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(138,122,155,0.15); }
+  .piloto-contra-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,122,155,0.6); margin-bottom: 12px; }
+  .piloto-contra-itens { display: flex; flex-wrap: wrap; gap: 8px; }
+  .piloto-contra-item { font-size: 13px; padding: 6px 16px; border: 1px solid rgba(138,122,155,0.2); color: rgba(255,255,255,0.45); }
+
+  .rodape { margin-top: 72px; padding-top: 32px; border-top: 1px solid rgba(138,122,155,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .rodape p { font-size: 12px; color: rgba(255,255,255,0.2); }
+  .voltar { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple); text-decoration: none; border-bottom: 1px solid rgba(138,122,155,0.3); padding-bottom: 2px; }
+
+  @media (max-width: 700px) {
+    .header { padding: 48px 32px 40px; }
+    .corpo { padding: 48px 24px; }
+    .contexto { padding: 28px; }
+    .contexto-grid { grid-template-columns: 1fr; }
+    .estrategia { grid-template-columns: 1fr; }
+    .canal-tab { flex-wrap: wrap; }
+    .header-title { font-size: 36px; }
+    .piloto { padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-bg"></div>
+  <div class="header-tag">Prospect · Prospecção Ativa</div>
+  <h1 class="header-title">Dra. <em>Thayara</em></h1>
+  <p class="header-sub">Fisioterapeuta especializada em idosos, atendimento domiciliar. Contato pessoal. Primeiro prospect oficial da Zyllah Digital.</p>
+  <div class="header-meta">
+    <div class="header-meta-item"><strong>Especialidade:</strong> Fisioterapia geriátrica domiciliar</div>
+    <div class="header-meta-item"><strong>Conexão:</strong> Contato pessoal</div>
+    <div class="header-meta-item"><strong>Status:</strong> Abordagem inicial</div>
+    <div class="header-meta-item"><strong>Plano sugerido:</strong> Piloto — Presença Completa</div>
+  </div>
+</div>
+
+<div class="corpo">
+
+  <div class="contexto">
+    <span class="contexto-tag">Por que a Thayara é o prospect ideal para começar</span>
+    <div class="contexto-titulo">Contexto + oportunidade</div>
+    <div class="contexto-grid">
+      <div>
+        <div class="contexto-item-label">O nicho dela</div>
+        <div class="contexto-item-val">Fisioterapia geriátrica domiciliar é um dos nichos com maior potencial de posicionamento digital no Brasil — e quase nenhum profissional tem identidade sólida. Quem chegar primeiro com presença consistente se torna a referência da região.</div>
+      </div>
+      <div>
+        <div class="contexto-item-label">O público dela</div>
+        <div class="contexto-item-val">Não são os idosos que decidem — são os filhos e cuidadores que pesquisam. Eles pesquisam online, verificam perfil, buscam confiança. Uma presença digital bem construída converte essa pesquisa em contato.</div>
+      </div>
+      <div>
+        <div class="contexto-item-label">Vantagem da conexão pessoal</div>
+        <div class="contexto-item-val">Você já tem confiança pré-estabelecida. Não precisa se apresentar — precisa apresentar a oportunidade. A abordagem pode ser direta e pessoal, sem a formalidade de prospecção fria.</div>
+      </div>
+      <div>
+        <div class="contexto-item-label">O que ela provavelmente não tem</div>
+        <div class="contexto-item-val">Identidade visual consistente, site profissional, estratégia de conteúdo, sistema de captação de leads. É um ponto de partida limpo — você constrói do zero, sem precisar corrigir nada.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTRATÉGIA -->
+  <div style="font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--purple);margin-bottom:20px;">Estratégia de abordagem</div>
+  <div class="estrategia">
+    <div class="est do">
+      <h4>✓ Fazer</h4>
+      <ul>
+        <li>Personalizar com algo específico do trabalho dela</li>
+        <li>Nomear o nicho com precisão — ela vai sentir que você entendeu</li>
+        <li>Propor conversa, não fechar venda na primeira mensagem</li>
+        <li>Usar o tom de quem conhece, não de vendedor</li>
+        <li>Mencionar piloto / condições especiais de lançamento</li>
+        <li>Ser direto sobre a contrapartida não-monetária</li>
+      </ul>
+    </div>
+    <div class="est dont">
+      <h4>✕ Evitar</h4>
+      <ul>
+        <li>Mandar tabela de preços sem contexto</li>
+        <li>Texto genérico que parece disparo em massa</li>
+        <li>Prometer resultado sem briefing</li>
+        <li>Urgência artificial ("vagas limitadas por tempo")</li>
+        <li>Texto longo — ela vai ler no celular, entre atendimentos</li>
+        <li>Mais de um follow-up</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MENSAGENS -->
+  <div class="canal-tab">
+    <button class="canal-btn ativo" onclick="mostrar('whatsapp', this)">WhatsApp</button>
+    <button class="canal-btn" onclick="mostrar('instagram', this)">Instagram DM</button>
+    <button class="canal-btn" onclick="mostrar('followup', this)">Follow-up (5 dias)</button>
+    <button class="canal-btn" onclick="mostrar('piloto', this)">Se aceitar conversar</button>
+  </div>
+
+  <div class="msg-box" id="msg-whatsapp">
+    <div class="msg-label">WhatsApp · Primeira mensagem · Tom pessoal e direto</div>
+    <div class="msg-texto" id="texto-whatsapp">Thayara, boa tarde! Tudo bem?
+
+Estou lançando a Zyllah Digital — uma agência focada em presença digital de alto padrão para especialistas de saúde.
+
+Pensei em você especificamente porque fisioterapia geriátrica domiciliar é um nicho com altíssimo potencial — e quase nenhum profissional da área tem uma presença digital à altura do trabalho que faz.
+
+Quem decide a contratação de um fisioterapeuta domiciliar geralmente não é o paciente, mas a família. E a família pesquisa online antes de ligar. Uma presença bem construída transforma essa pesquisa em contato.
+
+Estou selecionando dois ou três primeiros clientes para um projeto piloto com condições especiais de lançamento. A ideia é construir algo real juntos — e usar o caso como referência para crescer.
+
+Posso te contar mais sobre como funcionaria?</div>
+    <button class="btn-copiar-msg" onclick="copiarMsg('texto-whatsapp', this)">Copiar mensagem</button>
+    <div class="msg-nota">Envie sem negrito (sem asteriscos). Aguarde pelo menos 24h antes de qualquer follow-up. Se ela responder com interesse mas sem compromisso, use a mensagem "Se aceitar conversar".</div>
+  </div>
+
+  <div class="msg-box oculto" id="msg-instagram">
+    <div class="msg-label">Instagram DM · Mais curto, tom leve</div>
+    <div class="msg-texto" id="texto-instagram">Thayara, oi! Estou lançando a Zyllah Digital — presença digital para especialistas de saúde.
+
+Pensei em você porque fisioterapia geriátrica domiciliar tem um potencial enorme de posicionamento digital, e muito poucos profissionais exploram isso.
+
+Estou em fase de piloto com condições especiais para os primeiros clientes. Posso te contar melhor como funciona?</div>
+    <button class="btn-copiar-msg" onclick="copiarMsg('texto-instagram', this)">Copiar mensagem</button>
+    <div class="msg-nota">No Instagram prefira mensagens curtas. Se ela responder, migre a conversa para WhatsApp — é mais adequado para um assunto profissional.</div>
+  </div>
+
+  <div class="msg-box oculto" id="msg-followup">
+    <div class="msg-label">Follow-up · Apenas se não houver resposta em 5 dias</div>
+    <div class="msg-texto" id="texto-followup">Thayara, só passando para não deixar a mensagem anterior perdida.
+
+Se o momento não for esse, tudo bem — fico à disposição quando fizer sentido. E se quiser entender melhor antes de decidir qualquer coisa, é só falar. Sem compromisso nenhum.</div>
+    <button class="btn-copiar-msg" onclick="copiarMsg('texto-followup', this)">Copiar mensagem</button>
+    <div class="msg-nota">Apenas um follow-up. Se não responder após este, não insista — preserve o relacionamento. O timing pode simplesmente não ser o certo agora. Você pode retomar em 2–3 meses naturalmente.</div>
+  </div>
+
+  <div class="msg-box oculto" id="msg-piloto">
+    <div class="msg-label">Quando ela aceitar conversar · Explicando o piloto</div>
+    <div class="msg-texto" id="texto-piloto">Ótimo! Para te explicar melhor:
+
+O projeto piloto é para 3 primeiros clientes que me ajudem a refinar a metodologia. Em troca de condições bem diferentes das que vou praticar depois, peço:
+
+— Depoimento honesto sobre o processo após 60 dias
+— Autorização para usar o seu caso como referência para novos clientes
+— Indicação de um colega quando fizer sentido
+
+Do lado da Zyllah, você recebe o sistema completo de presença digital — identidade visual, site, gestão das redes e o Zyllah Flow (atendimento automatizado pelo WhatsApp). Tudo com o mesmo nível de atenção que qualquer cliente pagante recebe.
+
+Podemos agendar uma conversa de 30 minutos para eu entender melhor o que você precisa e te mostrar o que seria possível? Pode ser por vídeo ou pessoalmente.</div>
+    <button class="btn-copiar-msg" onclick="copiarMsg('texto-piloto', this)">Copiar mensagem</button>
+    <div class="msg-nota">Essa mensagem explica o piloto sem usar a palavra "grátis". O contrato de piloto formaliza tudo isso — consultar zyllah_contratos.html.</div>
+  </div>
+
+  <!-- PILOTO -->
+  <div class="piloto">
+    <span class="piloto-tag">Condições do piloto para a Thayara</span>
+    <h3 class="piloto-titulo">Projeto piloto<br><em>com contrapartida</em></h3>
+    <p class="piloto-desc">Não é trabalho de graça — é troca estratégica documentada. O contrato de piloto formaliza exatamente o que cada lado entrega. Isso preserva sua posição profissional e cria expectativas claras para ela.</p>
+    <div class="piloto-conds">
+      <div class="piloto-cond">
+        <div class="piloto-cond-label">Plano sugerido</div>
+        <div class="piloto-cond-val">Presença Completa · Piloto</div>
+      </div>
+      <div class="piloto-cond">
+        <div class="piloto-cond-label">Valor monetário</div>
+        <div class="piloto-cond-val"><s>R$2.800/mês</s> → R$ 0</div>
+      </div>
+      <div class="piloto-cond">
+        <div class="piloto-cond-label">Duração do piloto</div>
+        <div class="piloto-cond-val">3 meses</div>
+      </div>
+    </div>
+    <div class="piloto-contrapartidas">
+      <div class="piloto-contra-label">Contrapartidas formalizadas em contrato</div>
+      <div class="piloto-contra-itens">
+        <div class="piloto-contra-item">Depoimento escrito em 60 dias</div>
+        <div class="piloto-contra-item">Autorização de case público</div>
+        <div class="piloto-contra-item">Indicação de 1 colega especialista</div>
+        <div class="piloto-contra-item">Disponibilidade para 1 sessão foto/vídeo/mês</div>
+        <div class="piloto-contra-item">Preenchimento do briefing completo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRÓXIMOS PASSOS -->
+  <div class="passos">
+    <h3 class="passos-titulo">Se ela <em>disser sim</em></h3>
+    <div class="passo">
+      <div class="passo-num">1</div>
+      <div class="passo-corpo">
+        <div class="passo-titulo">Enviar o Briefing Rápido</div>
+        <div class="passo-desc">15 perguntas de identidade para ela responder antes da sessão de alinhamento. Resposta vai para zyllah.digital@gmail.com.</div>
+        <a href="zyllah_briefing_rapido.html" class="passo-link" target="_blank">Abrir Briefing Rápido →</a>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">2</div>
+      <div class="passo-corpo">
+        <div class="passo-titulo">Assinar os documentos</div>
+        <div class="passo-desc">Contrato de Piloto + Autorização de Imagem + NDA. Todos precisam estar assinados antes de qualquer captação.</div>
+        <a href="zyllah_contratos.html" class="passo-link" target="_blank">Contratos →</a>
+        &nbsp;&nbsp;
+        <a href="zyllah_docs_producao.html" class="passo-link" target="_blank">Docs de Produção →</a>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">3</div>
+      <div class="passo-corpo">
+        <div class="passo-titulo">Sessão de alinhamento (45min)</div>
+        <div class="passo-desc">Com o briefing em mãos, agendar sessão para alinhar identidade, direção visual e calendário de captação.</div>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">4</div>
+      <div class="passo-corpo">
+        <div class="passo-titulo">Primeira sessão de produção</div>
+        <div class="passo-desc">2h de captação no domicílio ou em local acordado. Fotos, vídeos curtos para redes, material para o site.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <a class="voltar" href="zyllah_hub.html">← Voltar ao Hub</a>
+    <p>Zyllah Digital · Prospect Thayara · Uso interno</p>
+  </div>
+
+</div>
+
+<script>
+function mostrar(canal, btn) {
+  document.querySelectorAll('.msg-box').forEach(b => b.classList.add('oculto'));
+  document.getElementById('msg-' + canal).classList.remove('oculto');
+  document.querySelectorAll('.canal-btn').forEach(b => b.classList.remove('ativo'));
+  btn.classList.add('ativo');
+}
+function copiarMsg(id, btn) {
+  const texto = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(texto).then(() => {
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copiado');
+    setTimeout(() => { btn.textContent = 'Copiar mensagem'; btn.classList.remove('copiado'); }, 2500);
+  });
+}
+</script>
+</body>
+</html>
