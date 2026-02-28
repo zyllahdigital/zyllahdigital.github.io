@@ -135,6 +135,21 @@
   nav.scrolled .nav-row-bottom { border-top-color: rgba(184,151,106,0.18); }
   .nav-logo { text-decoration: none; display: block; width: 520px; height: 158px; }
   .nav-logo svg { width: 100%; height: 100%; }
+
+  .nav-link-flow {
+    background: var(--ink-dark, #1A1714);
+    color: rgba(255,255,255,0.75) !important;
+    padding: 6px 16px !important;
+    border: 1px solid rgba(184,151,106,0.3);
+    letter-spacing: 0.18em !important;
+    transition: all 0.25s !important;
+  }
+  .nav-link-flow:hover {
+    background: var(--gold) !important;
+    color: var(--ink) !important;
+    border-color: var(--gold) !important;
+  }
+
   .nav-link {
     font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
     text-transform: uppercase; color: rgba(245,240,232,0.65);
@@ -443,13 +458,13 @@
     <polygon fill="#c7a866" points="1176.15 641.19 1176.15 583.52 1171.58 583.52 1171.58 641.19 1171.58 645.76 1176.15 645.76 1212.64 645.76 1212.64 641.19 1176.15 641.19"/>
   </g>
 </svg></a>
-    <a href="#flow" style="font-size:12px;letter-spacing:0.12em;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#B8976A'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Zyllah Flow</a>
     <a href="#diagnostico" class="nav-cta">Solicitar Diagnóstico</a>
   </div>
   <div class="nav-row-bottom">
     <a href="#servicos" class="nav-link">Serviços</a>
     <a href="#para-quem" class="nav-link">Para Quem</a>
     <a href="#sobre" class="nav-link">Sobre</a>
+    <a href="#flow" class="nav-link nav-link-flow">Zyllah Flow</a>
   </div>
 </nav>
 
@@ -719,6 +734,36 @@
   function abrirModal() { document.getElementById('modalPrivacidade').style.display = 'block'; }
   function fecharModal() { document.getElementById('modalPrivacidade').style.display = 'none'; }
   window.addEventListener('click', e => { if (e.target === document.getElementById('modalPrivacidade')) fecharModal(); });
+
+  // GA4 section tracking
+  (function() {
+    const sections = [
+      {id: 'servicos', label: 'Servicos'},
+      {id: 'para-quem', label: 'Para_Quem'},
+      {id: 'sobre', label: 'Sobre'},
+      {id: 'flow', label: 'Zyllah_Flow'},
+      {id: 'diagnostico', label: 'Diagnostico'}
+    ];
+    const seen = new Set();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !seen.has(entry.target.id)) {
+          seen.add(entry.target.id);
+          const sec = sections.find(s => s.id === entry.target.id);
+          if (sec && typeof gtag !== 'undefined') {
+            gtag('event', 'section_view', { section_name: sec.label });
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+    document.addEventListener('DOMContentLoaded', () => {
+      sections.forEach(s => {
+        const el = document.getElementById(s.id);
+        if (el) observer.observe(el);
+      });
+    });
+  })();
+
 </script>
 </body>
 </html>
